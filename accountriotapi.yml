@@ -1,0 +1,1068 @@
+openapi: 3.0.3
+info:
+  title: AccountRiotApi
+  description: riotgames.com account api
+  version: 1.0.0
+servers:
+- url: https://euw1.api.riotgames.com/
+tags:
+- name: dataAccountRiotApi
+  description:  Data Account Riot Api
+
+paths:
+
+    /lol/summoner/v4/summoners/by-name/{summonerName}:
+        get:
+          tags:
+          - dataSummonerName
+          summary: Data List
+          operationId: getDataSummonerName
+          parameters:
+          - name: summonerName
+            in: path
+            description: version
+            required: true
+            schema:
+              type: string
+          - name: api_key
+            in: query
+            description: api_key
+            required: true
+            schema:
+              type: string
+          responses:
+            "200":
+              description: success
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/SummonerByName'
+            default:
+              description: enexpected error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorModel'
+    
+    /lol/match/v5/matches/by-puuid/{puuid}/ids:
+        get:
+          tags:
+          - dataListMatches
+          summary: Data List
+          operationId: getDataMatchesList
+          parameters:
+          - name: puuid
+            in: path
+            description: version
+            required: true
+            schema:
+              type: string
+          - name: api_key
+            in: query
+            description: api_key
+            required: true
+            schema:
+              type: string
+          - name: startTime
+            in: query
+            description: 'Epoch timestamp in seconds. The matchlist started storing timestamps on June 16th, 2021. Any matches played before June 16th, 2021 wont be included in the results if the startTime filter is set.'
+            required: false
+            schema:
+              type: "number"
+          - name: endTime
+            in: query
+            description: Epoch timestamp in seconds.
+            required: false
+            schema:
+              type: "number"
+          - name: queue
+            in: query
+            description: 'Filter the list of match ids by a specific queue id. This filter is mutually inclusive of the type filter meaning any match ids returned must match both the queue and type filters.'
+            required: false
+            schema:
+              type: integer
+          - name: type
+            in: query
+            description: 'Filter the list of match ids by the type of match. This filter is mutually inclusive of the queue filter meaning any match ids returned must match both the queue and type filters.'
+            required: false
+            schema:
+              type: string
+          - name: start
+            in: query
+            description: 'Defaults to 0. Start index.'
+            required: false
+            schema:
+              type: integer
+          - name: count
+            in: query
+            description: 'Defaults to 20. Valid values: 0 to 100. Number of match ids to return.'
+            required: false
+            schema:
+              type: integer
+          responses:
+            "200":
+              description: success
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                       type: "string"
+            default:
+              description: enexpected error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorModel'
+
+    /lol/match/v5/matches/{matchId}:
+        get:
+          tags:
+          - dataMatchInfo
+          summary: Data List
+          operationId: getDataMatchInfo
+          parameters:
+          - name: matchId
+            in: path
+            description: version
+            required: true
+            schema:
+              type: string
+          - name: api_key
+            in: query
+            description: api_key
+            required: true
+            schema:
+              type: string
+          responses:
+            "200":
+              description: success
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ModelMatchInfo'
+            default:
+              description: enexpected error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorModel'
+
+
+components:
+  schemas:
+  
+    ErrorModel:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          maximum: 600
+          minimum: 100
+          type: integer
+
+    SummonerByName:
+        required:
+        - "id"
+        - "accountId"
+        - "puuid"
+        - "name"
+        - "profileIconId"
+        - "revisionDate"
+        - "summonerLevel"
+        type: object
+        properties:
+            id:
+              type: "string"
+            accountId:
+              type: "string"
+            puuid:
+              type: "string"
+            name:
+              type: "string"
+            profileIconId:
+              type: "number"
+            revisionDate:
+              type: "number"
+            summonerLevel:
+              type: "number"
+        
+        
+    ModelMatchInfo:
+          required:
+            - "metadata"
+            - "info"
+          properties:
+            metadata:
+              required:
+                - "dataVersion"
+                - "matchId"
+                - "participants"
+              properties:
+                dataVersion:
+                  type: "string"
+                matchId:
+                  type: "string"
+                participants:
+                  type: "array"
+                  items:
+                    type: "string"
+              type: "object"
+            info:
+              required:
+                - "endOfGameResult"
+                - "gameCreation"
+                - "gameDuration"
+                - "gameEndTimestamp"
+                - "gameId"
+                - "gameMode"
+                - "gameName"
+                - "gameStartTimestamp"
+                - "gameType"
+                - "gameVersion"
+                - "mapId"
+                - "participants"
+                - "platformId"
+                - "queueId"
+                - "teams"
+                - "tournamentCode"
+              properties:
+                endOfGameResult:
+                  type: "string"
+                gameCreation:
+                  type: "number"
+                gameDuration:
+                  type: "number"
+                gameEndTimestamp:
+                  type: "number"
+                gameId:
+                  type: "number"
+                gameMode:
+                  type: "string"
+                gameName:
+                  type: "string"
+                gameStartTimestamp:
+                  type: "number"
+                gameType:
+                  type: "string"
+                gameVersion:
+                  type: "string"
+                mapId:
+                  type: "number"
+                participants:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      allInPings:
+                        type: "number"
+                      assistMePings:
+                        type: "number"
+                      assists:
+                        type: "number"
+                      baronKills:
+                        type: "number"
+                      basicPings:
+                        type: "number"
+                      bountyLevel:
+                        type: "number"
+                      challenges:
+                        required:
+                          - "12AssistStreakCount"
+                          - "abilityUses"
+                          - "acesBefore15Minutes"
+                          - "alliedJungleMonsterKills"
+                          - "baronTakedowns"
+                          - "blastConeOppositeOpponentCount"
+                          - "bountyGold"
+                          - "buffsStolen"
+                          - "completeSupportQuestInTime"
+                          - "controlWardsPlaced"
+                          - "damagePerMinute"
+                          - "damageTakenOnTeamPercentage"
+                          - "dancedWithRiftHerald"
+                          - "deathsByEnemyChamps"
+                          - "dodgeSkillShotsSmallWindow"
+                          - "doubleAces"
+                          - "dragonTakedowns"
+                          - "earliestDragonTakedown"
+                          - "earlyLaningPhaseGoldExpAdvantage"
+                          - "effectiveHealAndShielding"
+                          - "elderDragonKillsWithOpposingSoul"
+                          - "elderDragonMultikills"
+                          - "enemyChampionImmobilizations"
+                          - "enemyJungleMonsterKills"
+                          - "epicMonsterKillsNearEnemyJungler"
+                          - "epicMonsterKillsWithin30SecondsOfSpawn"
+                          - "epicMonsterSteals"
+                          - "epicMonsterStolenWithoutSmite"
+                          - "fastestLegendary"
+                          - "firstTurretKilled"
+                          - "firstTurretKilledTime"
+                          - "flawlessAces"
+                          - "fullTeamTakedown"
+                          - "gameLength"
+                          - "getTakedownsInAllLanesEarlyJungleAsLaner"
+                          - "goldPerMinute"
+                          - "hadOpenNexus"
+                          - "immobilizeAndKillWithAlly"
+                          - "initialBuffCount"
+                          - "initialCrabCount"
+                          - "jungleCsBefore10Minutes"
+                          - "junglerTakedownsNearDamagedEpicMonster"
+                          - "kTurretsDestroyedBeforePlatesFall"
+                          - "kda"
+                          - "killAfterHiddenWithAlly"
+                          - "killParticipation"
+                          - "killedChampTookFullTeamDamageSurvived"
+                          - "killingSprees"
+                          - "killsNearEnemyTurret"
+                          - "killsOnOtherLanesEarlyJungleAsLaner"
+                          - "killsOnRecentlyHealedByAramPack"
+                          - "killsUnderOwnTurret"
+                          - "killsWithHelpFromEpicMonster"
+                          - "knockEnemyIntoTeamAndKill"
+                          - "landSkillShotsEarlyGame"
+                          - "laneMinionsFirst10Minutes"
+                          - "laningPhaseGoldExpAdvantage"
+                          - "legendaryCount"
+                          - "legendaryItemUsed"
+                          - "lostAnInhibitor"
+                          - "maxCsAdvantageOnLaneOpponent"
+                          - "maxKillDeficit"
+                          - "maxLevelLeadLaneOpponent"
+                          - "mejaisFullStackInTime"
+                          - "moreEnemyJungleThanOpponent"
+                          - "multiKillOneSpell"
+                          - "multiTurretRiftHeraldCount"
+                          - "multikills"
+                          - "multikillsAfterAggressiveFlash"
+                          - "outerTurretExecutesBefore10Minutes"
+                          - "outnumberedKills"
+                          - "outnumberedNexusKill"
+                          - "perfectDragonSoulsTaken"
+                          - "perfectGame"
+                          - "pickKillWithAlly"
+                          - "poroExplosions"
+                          - "quickCleanse"
+                          - "quickFirstTurret"
+                          - "quickSoloKills"
+                          - "riftHeraldTakedowns"
+                          - "saveAllyFromDeath"
+                          - "scuttleCrabKills"
+                          - "skillshotsDodged"
+                          - "skillshotsHit"
+                          - "snowballsHit"
+                          - "soloBaronKills"
+                          - "soloKills"
+                          - "stealthWardsPlaced"
+                          - "survivedSingleDigitHpCount"
+                          - "survivedThreeImmobilizesInFight"
+                          - "takedownOnFirstTurret"
+                          - "takedowns"
+                          - "takedownsAfterGainingLevelAdvantage"
+                          - "takedownsBeforeJungleMinionSpawn"
+                          - "takedownsFirstXMinutes"
+                          - "takedownsInAlcove"
+                          - "takedownsInEnemyFountain"
+                          - "teamBaronKills"
+                          - "teamDamagePercentage"
+                          - "teamElderDragonKills"
+                          - "teamRiftHeraldKills"
+                          - "thirdInhibitorDestroyedTime"
+                          - "tookLargeDamageSurvived"
+                          - "turretPlatesTaken"
+                          - "turretTakedowns"
+                          - "turretsTakenWithRiftHerald"
+                          - "twentyMinionsIn3SecondsCount"
+                          - "twoWardsOneSweeperCount"
+                          - "unseenRecalls"
+                          - "visionScoreAdvantageLaneOpponent"
+                          - "visionScorePerMinute"
+                          - "wardTakedowns"
+                          - "wardTakedownsBefore20M"
+                          - "wardsGuarded"
+                        properties:
+                          12AssistStreakCount:
+                            type: "number"
+                          abilityUses:
+                            type: "number"
+                          acesBefore15Minutes:
+                            type: "number"
+                          alliedJungleMonsterKills:
+                            type: "number"
+                          baronTakedowns:
+                            type: "number"
+                          blastConeOppositeOpponentCount:
+                            type: "number"
+                          bountyGold:
+                            type: "number"
+                          buffsStolen:
+                            type: "number"
+                          completeSupportQuestInTime:
+                            type: "number"
+                          controlWardsPlaced:
+                            type: "number"
+                          damagePerMinute:
+                            type: "number"
+                          damageTakenOnTeamPercentage:
+                            type: "number"
+                          dancedWithRiftHerald:
+                            type: "number"
+                          deathsByEnemyChamps:
+                            type: "number"
+                          dodgeSkillShotsSmallWindow:
+                            type: "number"
+                          doubleAces:
+                            type: "number"
+                          dragonTakedowns:
+                            type: "number"
+                          earliestDragonTakedown:
+                            type: "number"
+                          earlyLaningPhaseGoldExpAdvantage:
+                            type: "number"
+                          effectiveHealAndShielding:
+                            type: "number"
+                          elderDragonKillsWithOpposingSoul:
+                            type: "number"
+                          elderDragonMultikills:
+                            type: "number"
+                          enemyChampionImmobilizations:
+                            type: "number"
+                          enemyJungleMonsterKills:
+                            type: "number"
+                          epicMonsterKillsNearEnemyJungler:
+                            type: "number"
+                          epicMonsterKillsWithin30SecondsOfSpawn:
+                            type: "number"
+                          epicMonsterSteals:
+                            type: "number"
+                          epicMonsterStolenWithoutSmite:
+                            type: "number"
+                          fastestLegendary:
+                            type: "number"
+                          firstTurretKilled:
+                            type: "number"
+                          firstTurretKilledTime:
+                            type: "number"
+                          flawlessAces:
+                            type: "number"
+                          fullTeamTakedown:
+                            type: "number"
+                          gameLength:
+                            type: "number"
+                          getTakedownsInAllLanesEarlyJungleAsLaner:
+                            type: "number"
+                          goldPerMinute:
+                            type: "number"
+                          hadOpenNexus:
+                            type: "number"
+                          immobilizeAndKillWithAlly:
+                            type: "number"
+                          initialBuffCount:
+                            type: "number"
+                          initialCrabCount:
+                            type: "number"
+                          jungleCsBefore10Minutes:
+                            type: "number"
+                          junglerTakedownsNearDamagedEpicMonster:
+                            type: "number"
+                          kTurretsDestroyedBeforePlatesFall:
+                            type: "number"
+                          kda:
+                            type: "number"
+                          killAfterHiddenWithAlly:
+                            type: "number"
+                          killParticipation:
+                            type: "number"
+                          killedChampTookFullTeamDamageSurvived:
+                            type: "number"
+                          killingSprees:
+                            type: "number"
+                          killsNearEnemyTurret:
+                            type: "number"
+                          killsOnOtherLanesEarlyJungleAsLaner:
+                            type: "number"
+                          killsOnRecentlyHealedByAramPack:
+                            type: "number"
+                          killsUnderOwnTurret:
+                            type: "number"
+                          killsWithHelpFromEpicMonster:
+                            type: "number"
+                          knockEnemyIntoTeamAndKill:
+                            type: "number"
+                          landSkillShotsEarlyGame:
+                            type: "number"
+                          laneMinionsFirst10Minutes:
+                            type: "number"
+                          laningPhaseGoldExpAdvantage:
+                            type: "number"
+                          legendaryCount:
+                            type: "number"
+                          legendaryItemUsed:
+                            type: "array"
+                            items:
+                              type: "number"
+                          lostAnInhibitor:
+                            type: "number"
+                          maxCsAdvantageOnLaneOpponent:
+                            type: "number"
+                          maxKillDeficit:
+                            type: "number"
+                          maxLevelLeadLaneOpponent:
+                            type: "number"
+                          mejaisFullStackInTime:
+                            type: "number"
+                          moreEnemyJungleThanOpponent:
+                            type: "number"
+                          multiKillOneSpell:
+                            type: "number"
+                          multiTurretRiftHeraldCount:
+                            type: "number"
+                          multikills:
+                            type: "number"
+                          multikillsAfterAggressiveFlash:
+                            type: "number"
+                          outerTurretExecutesBefore10Minutes:
+                            type: "number"
+                          outnumberedKills:
+                            type: "number"
+                          outnumberedNexusKill:
+                            type: "number"
+                          perfectDragonSoulsTaken:
+                            type: "number"
+                          perfectGame:
+                            type: "number"
+                          pickKillWithAlly:
+                            type: "number"
+                          poroExplosions:
+                            type: "number"
+                          quickCleanse:
+                            type: "number"
+                          quickFirstTurret:
+                            type: "number"
+                          quickSoloKills:
+                            type: "number"
+                          riftHeraldTakedowns:
+                            type: "number"
+                          saveAllyFromDeath:
+                            type: "number"
+                          scuttleCrabKills:
+                            type: "number"
+                          skillshotsDodged:
+                            type: "number"
+                          skillshotsHit:
+                            type: "number"
+                          snowballsHit:
+                            type: "number"
+                          soloBaronKills:
+                            type: "number"
+                          soloKills:
+                            type: "number"
+                          stealthWardsPlaced:
+                            type: "number"
+                          survivedSingleDigitHpCount:
+                            type: "number"
+                          survivedThreeImmobilizesInFight:
+                            type: "number"
+                          takedownOnFirstTurret:
+                            type: "number"
+                          takedowns:
+                            type: "number"
+                          takedownsAfterGainingLevelAdvantage:
+                            type: "number"
+                          takedownsBeforeJungleMinionSpawn:
+                            type: "number"
+                          takedownsFirstXMinutes:
+                            type: "number"
+                          takedownsInAlcove:
+                            type: "number"
+                          takedownsInEnemyFountain:
+                            type: "number"
+                          teamBaronKills:
+                            type: "number"
+                          teamDamagePercentage:
+                            type: "number"
+                          teamElderDragonKills:
+                            type: "number"
+                          teamRiftHeraldKills:
+                            type: "number"
+                          thirdInhibitorDestroyedTime:
+                            type: "number"
+                          tookLargeDamageSurvived:
+                            type: "number"
+                          turretPlatesTaken:
+                            type: "number"
+                          turretTakedowns:
+                            type: "number"
+                          turretsTakenWithRiftHerald:
+                            type: "number"
+                          twentyMinionsIn3SecondsCount:
+                            type: "number"
+                          twoWardsOneSweeperCount:
+                            type: "number"
+                          unseenRecalls:
+                            type: "number"
+                          visionScoreAdvantageLaneOpponent:
+                            type: "number"
+                          visionScorePerMinute:
+                            type: "number"
+                          wardTakedowns:
+                            type: "number"
+                          wardTakedownsBefore20M:
+                            type: "number"
+                          wardsGuarded:
+                            type: "number"
+                        type: "object"
+                      champExperience:
+                        type: "number"
+                      champLevel:
+                        type: "number"
+                      championId:
+                        type: "number"
+                      championName:
+                        type: "string"
+                      championTransform:
+                        type: "number"
+                      commandPings:
+                        type: "number"
+                      consumablesPurchased:
+                        type: "number"
+                      damageDealtToBuildings:
+                        type: "number"
+                      damageDealtToObjectives:
+                        type: "number"
+                      damageDealtToTurrets:
+                        type: "number"
+                      damageSelfMitigated:
+                        type: "number"
+                      dangerPings:
+                        type: "number"
+                      deaths:
+                        type: "number"
+                      detectorWardsPlaced:
+                        type: "number"
+                      doubleKills:
+                        type: "number"
+                      dragonKills:
+                        type: "number"
+                      eligibleForProgression:
+                        type: "boolean"
+                      enemyMissingPings:
+                        type: "number"
+                      enemyVisionPings:
+                        type: "number"
+                      firstBloodAssist:
+                        type: "boolean"
+                      firstBloodKill:
+                        type: "boolean"
+                      firstTowerAssist:
+                        type: "boolean"
+                      firstTowerKill:
+                        type: "boolean"
+                      gameEndedInEarlySurrender:
+                        type: "boolean"
+                      gameEndedInSurrender:
+                        type: "boolean"
+                      getBackPings:
+                        type: "number"
+                      goldEarned:
+                        type: "number"
+                      goldSpent:
+                        type: "number"
+                      holdPings:
+                        type: "number"
+                      individualPosition:
+                        type: "string"
+                      inhibitorKills:
+                        type: "number"
+                      inhibitorTakedowns:
+                        type: "number"
+                      inhibitorsLost:
+                        type: "number"
+                      item0:
+                        type: "number"
+                      item1:
+                        type: "number"
+                      item2:
+                        type: "number"
+                      item3:
+                        type: "number"
+                      item4:
+                        type: "number"
+                      item5:
+                        type: "number"
+                      item6:
+                        type: "number"
+                      itemsPurchased:
+                        type: "number"
+                      killingSprees:
+                        type: "number"
+                      kills:
+                        type: "number"
+                      lane:
+                        type: "string"
+                      largestCriticalStrike:
+                        type: "number"
+                      largestKillingSpree:
+                        type: "number"
+                      largestMultiKill:
+                        type: "number"
+                      longestTimeSpentLiving:
+                        type: "number"
+                      magicDamageDealt:
+                        type: "number"
+                      magicDamageDealtToChampions:
+                        type: "number"
+                      magicDamageTaken:
+                        type: "number"
+                      missions:
+                        required:
+                          - "playerScore0"
+                          - "playerScore1"
+                          - "playerScore10"
+                          - "playerScore11"
+                          - "playerScore2"
+                          - "playerScore3"
+                          - "playerScore4"
+                          - "playerScore5"
+                          - "playerScore6"
+                          - "playerScore7"
+                          - "playerScore8"
+                          - "playerScore9"
+                        properties:
+                          playerScore0:
+                            type: "number"
+                          playerScore1:
+                            type: "number"
+                          playerScore10:
+                            type: "number"
+                          playerScore11:
+                            type: "number"
+                          playerScore2:
+                            type: "number"
+                          playerScore3:
+                            type: "number"
+                          playerScore4:
+                            type: "number"
+                          playerScore5:
+                            type: "number"
+                          playerScore6:
+                            type: "number"
+                          playerScore7:
+                            type: "number"
+                          playerScore8:
+                            type: "number"
+                          playerScore9:
+                            type: "number"
+                        type: "object"
+                      needVisionPings:
+                        type: "number"
+                      neutralMinionsKilled:
+                        type: "number"
+                      nexusKills:
+                        type: "number"
+                      nexusLost:
+                        type: "number"
+                      nexusTakedowns:
+                        type: "number"
+                      objectivesStolen:
+                        type: "number"
+                      objectivesStolenAssists:
+                        type: "number"
+                      onMyWayPings:
+                        type: "number"
+                      participantId:
+                        type: "number"
+                      pentaKills:
+                        type: "number"
+                      perks:
+                        required:
+                          - "statPerks"
+                          - "styles"
+                        properties:
+                          statPerks:
+                            required:
+                              - "defense"
+                              - "flex"
+                              - "offense"
+                            properties:
+                              defense:
+                                type: "number"
+                              flex:
+                                type: "number"
+                              offense:
+                                type: "number"
+                            type: "object"
+                          styles:
+                            type: "array"
+                            items:
+                              type: "object"
+                              properties:
+                                description:
+                                  type: "string"
+                                selections:
+                                  type: "array"
+                                  items:
+                                    type: "object"
+                                    properties:
+                                      perk:
+                                        type: "number"
+                                      var1:
+                                        type: "number"
+                                      var2:
+                                        type: "number"
+                                      var3:
+                                        type: "number"
+                                style:
+                                  type: "number"
+                        type: "object"
+                      physicalDamageDealt:
+                        type: "number"
+                      physicalDamageDealtToChampions:
+                        type: "number"
+                      physicalDamageTaken:
+                        type: "number"
+                      placement:
+                        type: "number"
+                      playerAugment1:
+                        type: "number"
+                      playerAugment2:
+                        type: "number"
+                      playerAugment3:
+                        type: "number"
+                      playerAugment4:
+                        type: "number"
+                      playerScore0:
+                        type: "number"
+                      playerScore1:
+                        type: "number"
+                      playerScore10:
+                        type: "number"
+                      playerScore11:
+                        type: "number"
+                      playerScore2:
+                        type: "number"
+                      playerScore3:
+                        type: "number"
+                      playerScore4:
+                        type: "number"
+                      playerScore5:
+                        type: "number"
+                      playerScore6:
+                        type: "number"
+                      playerScore7:
+                        type: "number"
+                      playerScore8:
+                        type: "number"
+                      playerScore9:
+                        type: "number"
+                      playerSubteamId:
+                        type: "number"
+                      profileIcon:
+                        type: "number"
+                      pushPings:
+                        type: "number"
+                      puuid:
+                        type: "string"
+                      quadraKills:
+                        type: "number"
+                      riotIdGameName:
+                        type: "string"
+                      riotIdTagline:
+                        type: "string"
+                      role:
+                        type: "string"
+                      sightWardsBoughtInGame:
+                        type: "number"
+                      spell1Casts:
+                        type: "number"
+                      spell2Casts:
+                        type: "number"
+                      spell3Casts:
+                        type: "number"
+                      spell4Casts:
+                        type: "number"
+                      subteamPlacement:
+                        type: "number"
+                      summoner1Casts:
+                        type: "number"
+                      summoner1Id:
+                        type: "number"
+                      summoner2Casts:
+                        type: "number"
+                      summoner2Id:
+                        type: "number"
+                      summonerId:
+                        type: "string"
+                      summonerLevel:
+                        type: "number"
+                      summonerName:
+                        type: "string"
+                      teamEarlySurrendered:
+                        type: "boolean"
+                      teamId:
+                        type: "number"
+                      teamPosition:
+                        type: "string"
+                      timeCCingOthers:
+                        type: "number"
+                      timePlayed:
+                        type: "number"
+                      totalAllyJungleMinionsKilled:
+                        type: "number"
+                      totalDamageDealt:
+                        type: "number"
+                      totalDamageDealtToChampions:
+                        type: "number"
+                      totalDamageShieldedOnTeammates:
+                        type: "number"
+                      totalDamageTaken:
+                        type: "number"
+                      totalEnemyJungleMinionsKilled:
+                        type: "number"
+                      totalHeal:
+                        type: "number"
+                      totalHealsOnTeammates:
+                        type: "number"
+                      totalMinionsKilled:
+                        type: "number"
+                      totalTimeCCDealt:
+                        type: "number"
+                      totalTimeSpentDead:
+                        type: "number"
+                      totalUnitsHealed:
+                        type: "number"
+                      tripleKills:
+                        type: "number"
+                      trueDamageDealt:
+                        type: "number"
+                      trueDamageDealtToChampions:
+                        type: "number"
+                      trueDamageTaken:
+                        type: "number"
+                      turretKills:
+                        type: "number"
+                      turretTakedowns:
+                        type: "number"
+                      turretsLost:
+                        type: "number"
+                      unrealKills:
+                        type: "number"
+                      visionClearedPings:
+                        type: "number"
+                      visionScore:
+                        type: "number"
+                      visionWardsBoughtInGame:
+                        type: "number"
+                      wardsKilled:
+                        type: "number"
+                      wardsPlaced:
+                        type: "number"
+                      win:
+                        type: "boolean"
+                platformId:
+                  type: "string"
+                queueId:
+                  type: "number"
+                teams:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      bans:
+                        type: "array"
+                        items:
+                          type: "undefined"
+                      objectives:
+                        required:
+                          - "baron"
+                          - "champion"
+                          - "dragon"
+                          - "horde"
+                          - "inhibitor"
+                          - "riftHerald"
+                          - "tower"
+                        properties:
+                          baron:
+                            required:
+                              - "first"
+                              - "kills"
+                            properties:
+                              first:
+                                type: "boolean"
+                              kills:
+                                type: "number"
+                            type: "object"
+                          champion:
+                            required:
+                              - "first"
+                              - "kills"
+                            properties:
+                              first:
+                                type: "boolean"
+                              kills:
+                                type: "number"
+                            type: "object"
+                          dragon:
+                            required:
+                              - "first"
+                              - "kills"
+                            properties:
+                              first:
+                                type: "boolean"
+                              kills:
+                                type: "number"
+                            type: "object"
+                          horde:
+                            required:
+                              - "first"
+                              - "kills"
+                            properties:
+                              first:
+                                type: "boolean"
+                              kills:
+                                type: "number"
+                            type: "object"
+                          inhibitor:
+                            required:
+                              - "first"
+                              - "kills"
+                            properties:
+                              first:
+                                type: "boolean"
+                              kills:
+                                type: "number"
+                            type: "object"
+                          riftHerald:
+                            required:
+                              - "first"
+                              - "kills"
+                            properties:
+                              first:
+                                type: "boolean"
+                              kills:
+                                type: "number"
+                            type: "object"
+                          tower:
+                            required:
+                              - "first"
+                              - "kills"
+                            properties:
+                              first:
+                                type: "boolean"
+                              kills:
+                                type: "number"
+                            type: "object"
+                        type: "object"
+                      teamId:
+                        type: "number"
+                      win:
+                        type: "boolean"
+                tournamentCode:
+                  type: "string"
+              type: "object"

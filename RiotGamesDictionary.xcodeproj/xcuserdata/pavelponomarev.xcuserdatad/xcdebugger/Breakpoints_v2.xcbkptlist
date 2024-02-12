@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "0C22A664-1407-4DF2-AC35-05F4EA9DAB14"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA8648AD-C788-4150-B9AE-7F73BEC578C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RiotGamesDictionary/methods/di/Services/URLSessionRequestBuilderFactoryLoLDictionary.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "urlSession(_:task:didReceive:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EA8648AD-C788-4150-B9AE-7F73BEC578C9 - 7244be07d5f82e19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RiotGamesDictionary.SSLPinnedSessionDelegate.urlSession(_: __C.NSURLSession, task: __C.NSURLSessionTask, didReceive: __C.NSURLAuthenticationChallenge, completionHandler: (__C.NSURLSessionAuthChallengeDisposition, Swift.Optional&lt;__C.NSURLCredential&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "RiotGamesDictionary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelponomarev/Desktop/Projects/RiotProject/RiotGamesDictionary/RiotGamesDictionary/methods/di/Services/URLSessionRequestBuilderFactoryLoLDictionary.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "1084">
+               </Location>
+               <Location
+                  uuid = "EA8648AD-C788-4150-B9AE-7F73BEC578C9 - 7244be07d5f82e19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RiotGamesDictionary.SSLPinnedSessionDelegate.urlSession(_: __C.NSURLSession, task: __C.NSURLSessionTask, didReceive: __C.NSURLAuthenticationChallenge, completionHandler: (__C.NSURLSessionAuthChallengeDisposition, Swift.Optional&lt;__C.NSURLCredential&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "RiotGamesDictionary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelponomarev/Desktop/Projects/RiotProject/RiotGamesDictionary/RiotGamesDictionary/methods/di/Services/URLSessionRequestBuilderFactoryLoLDictionary.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "1412">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F53422F-A05B-4A16-80A9-B9BDE7F48DAC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5C89ABD-4F8B-4DA3-94B9-AD2BD13A2F1B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "certificate(filename:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D5C89ABD-4F8B-4DA3-94B9-AD2BD13A2F1B - 55ab338cd4ab9f92"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RiotGamesDictionary.Certificates.certificate(filename: Swift.String) throws -&gt; Swift.Optional&lt;__C.SecCertificateRef&gt;"
+                  moduleName = "RiotGamesDictionary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelponomarev/Desktop/Projects/RiotProject/RiotGamesDictionary/RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "516">
+               </Location>
+               <Location
+                  uuid = "D5C89ABD-4F8B-4DA3-94B9-AD2BD13A2F1B - 55ab338cd4ab9f92"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RiotGamesDictionary.Certificates.certificate(filename: Swift.String) throws -&gt; Swift.Optional&lt;__C.SecCertificateRef&gt;"
+                  moduleName = "RiotGamesDictionary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelponomarev/Desktop/Projects/RiotProject/RiotGamesDictionary/RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "892">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

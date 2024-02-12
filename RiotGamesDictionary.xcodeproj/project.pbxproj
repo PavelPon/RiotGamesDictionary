@@ -1,0 +1,900 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7102F3DB2B2F44B2003F22A8 /* Certificates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102F3D62B2F44B2003F22A8 /* Certificates.swift */; };
+		7102F3DC2B2F44B2003F22A8 /* Obfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102F3D72B2F44B2003F22A8 /* Obfuscator.swift */; };
+		7102F3DD2B2F44B2003F22A8 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102F3D82B2F44B2003F22A8 /* Keychain.swift */; };
+		7102F3DE2B2F44B2003F22A8 /* URLSessionRequestBuilderFactoryLoLDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102F3D92B2F44B2003F22A8 /* URLSessionRequestBuilderFactoryLoLDictionary.swift */; };
+		715775042B4C059F00CA92F8 /* DIProject in Frameworks */ = {isa = PBXBuildFile; productRef = 715775032B4C059F00CA92F8 /* DIProject */; };
+		715775062B4C05AD00CA92F8 /* LoLDictionaryNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 715775052B4C05AD00CA92F8 /* LoLDictionaryNetwork */; };
+		715775092B4D9DAA00CA92F8 /* LoLDictionaryNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715775082B4D9DAA00CA92F8 /* LoLDictionaryNetworkService.swift */; };
+		7157750E2B4F187300CA92F8 /* DictionaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7157750D2B4F187300CA92F8 /* DictionaryScreen.swift */; };
+		715775102B4F188F00CA92F8 /* DictionaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7157750F2B4F188F00CA92F8 /* DictionaryStore.swift */; };
+		715775132B54601D00CA92F8 /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = 715775122B54601D00CA92F8 /* UI */; };
+		715C41582B75312C00BE917D /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C41572B75312C00BE917D /* KeychainService.swift */; };
+		715C415A2B7546B200BE917D /* ChampionSkinsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C41592B7546B200BE917D /* ChampionSkinsDetailView.swift */; };
+		715C41642B77993A00BE917D /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C41632B77993A00BE917D /* ImageLoader.swift */; };
+		715C41662B77A27700BE917D /* ImageLoaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C41652B77A27700BE917D /* ImageLoaderKey.swift */; };
+		715C41682B77A2CB00BE917D /* TestCacheImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C41672B77A2CB00BE917D /* TestCacheImageView.swift */; };
+		718BBC832B6806B700503489 /* RootStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718BBC822B6806B700503489 /* RootStore.swift */; };
+		7193F9E82B2A07A200208B46 /* RiotGamesDictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193F9E72B2A07A200208B46 /* RiotGamesDictionaryApp.swift */; };
+		7193F9EA2B2A07A200208B46 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7193F9E92B2A07A200208B46 /* RootView.swift */; };
+		7193F9EC2B2A07A300208B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7193F9EB2B2A07A300208B46 /* Assets.xcassets */; };
+		7193F9F02B2A07A300208B46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7193F9EF2B2A07A300208B46 /* Preview Assets.xcassets */; };
+		7193F9F82B2A0BCC00208B46 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7193F9F72B2A0BCC00208B46 /* ComposableArchitecture */; };
+		71C5595E2B78FFBB00EB1223 /* CertificatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C5595D2B78FFBB00EB1223 /* CertificatesService.swift */; };
+		71C559602B78FFC800EB1223 /* ObfuscatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C5595F2B78FFC800EB1223 /* ObfuscatorService.swift */; };
+		71E510BD2B7912A300188C71 /* ddragon.leagueoflegends.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 71E510BB2B79126D00188C71 /* ddragon.leagueoflegends.com.cer */; };
+		71E510C02B79425100188C71 /* AccountRiotApiNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 71E510BF2B79425100188C71 /* AccountRiotApiNetwork */; };
+		71E6B8FD2B6D58E80075C23E /* ChampionDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6B8FC2B6D58E80075C23E /* ChampionDetailStore.swift */; };
+		71E6B8FF2B6D5C010075C23E /* ChampionDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6B8FE2B6D5C010075C23E /* ChampionDetailScreen.swift */; };
+		961F09DA2B7A232000DF5E78 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F09D92B7A232000DF5E78 /* SettingsStore.swift */; };
+		961F09DC2B7A25DC00DF5E78 /* SettingsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F09DB2B7A25DC00DF5E78 /* SettingsStruct.swift */; };
+		966866A02B7379F200AB0788 /* DictionaryStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9668669F2B7379F200AB0788 /* DictionaryStruct.swift */; };
+		966B24042B7644FF00C0CAC4 /* RuneDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24032B7644FF00C0CAC4 /* RuneDetailStore.swift */; };
+		966B24062B76451F00C0CAC4 /* RuneDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24052B76451F00C0CAC4 /* RuneDetailScreen.swift */; };
+		966B24082B764D0700C0CAC4 /* SummonerDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24072B764D0700C0CAC4 /* SummonerDetailStore.swift */; };
+		966B240A2B764DE800C0CAC4 /* SummonerDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24092B764DE800C0CAC4 /* SummonerDetailScreen.swift */; };
+		96CDF7472B74B8EF00482F2F /* ChampionDetailStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CDF7462B74B8EF00482F2F /* ChampionDetailStruct.swift */; };
+		96D8C5022B70C1E200369E16 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8C5012B70C1E200369E16 /* AppResources.swift */; };
+		96D8FC0D2B7A3270005BE36F /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FC0C2B7A3270005BE36F /* SettingsScreen.swift */; };
+		96D8FC112B7A490B005BE36F /* LoLAcountNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FC102B7A490B005BE36F /* LoLAcountNetworkService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7102F3D62B2F44B2003F22A8 /* Certificates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Certificates.swift; sourceTree = "<group>"; };
+		7102F3D72B2F44B2003F22A8 /* Obfuscator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obfuscator.swift; sourceTree = "<group>"; };
+		7102F3D82B2F44B2003F22A8 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		7102F3D92B2F44B2003F22A8 /* URLSessionRequestBuilderFactoryLoLDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionRequestBuilderFactoryLoLDictionary.swift; sourceTree = "<group>"; };
+		715775012B4C02BD00CA92F8 /* DIProject */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DIProject; path = Modules/DIProject; sourceTree = "<group>"; };
+		715775082B4D9DAA00CA92F8 /* LoLDictionaryNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoLDictionaryNetworkService.swift; sourceTree = "<group>"; };
+		7157750D2B4F187300CA92F8 /* DictionaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryScreen.swift; sourceTree = "<group>"; };
+		7157750F2B4F188F00CA92F8 /* DictionaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStore.swift; sourceTree = "<group>"; };
+		715775112B545A2200CA92F8 /* UI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UI; path = Modules/UI; sourceTree = "<group>"; };
+		715C41572B75312C00BE917D /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		715C41592B7546B200BE917D /* ChampionSkinsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionSkinsDetailView.swift; sourceTree = "<group>"; };
+		715C41632B77993A00BE917D /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		715C41652B77A27700BE917D /* ImageLoaderKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderKey.swift; sourceTree = "<group>"; };
+		715C41672B77A2CB00BE917D /* TestCacheImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCacheImageView.swift; sourceTree = "<group>"; };
+		718BBC822B6806B700503489 /* RootStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStore.swift; sourceTree = "<group>"; };
+		7193F9E42B2A07A200208B46 /* RiotGamesDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiotGamesDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7193F9E72B2A07A200208B46 /* RiotGamesDictionaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiotGamesDictionaryApp.swift; sourceTree = "<group>"; };
+		7193F9E92B2A07A200208B46 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		7193F9EB2B2A07A300208B46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7193F9ED2B2A07A300208B46 /* RiotGamesDictionary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RiotGamesDictionary.entitlements; sourceTree = "<group>"; };
+		7193F9EF2B2A07A300208B46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7193F9F92B2A0F3300208B46 /* LoLDictionaryNetwork */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LoLDictionaryNetwork; path = Modules/LoLDictionaryNetwork; sourceTree = "<group>"; };
+		71C5595D2B78FFBB00EB1223 /* CertificatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatesService.swift; sourceTree = "<group>"; };
+		71C5595F2B78FFC800EB1223 /* ObfuscatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatorService.swift; sourceTree = "<group>"; };
+		71E510BB2B79126D00188C71 /* ddragon.leagueoflegends.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ddragon.leagueoflegends.com.cer; sourceTree = "<group>"; };
+		71E510BE2B79420800188C71 /* AccountRiotApiNetwork */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AccountRiotApiNetwork; path = Modules/AccountRiotApiNetwork; sourceTree = "<group>"; };
+		71E6B8FC2B6D58E80075C23E /* ChampionDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionDetailStore.swift; sourceTree = "<group>"; };
+		71E6B8FE2B6D5C010075C23E /* ChampionDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionDetailScreen.swift; sourceTree = "<group>"; };
+		961F09D92B7A232000DF5E78 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		961F09DB2B7A25DC00DF5E78 /* SettingsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStruct.swift; sourceTree = "<group>"; };
+		9668669F2B7379F200AB0788 /* DictionaryStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStruct.swift; sourceTree = "<group>"; };
+		966B24032B7644FF00C0CAC4 /* RuneDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuneDetailStore.swift; path = RiotGamesDictionary/screens/championDetail/struct/RuneDetailStore.swift; sourceTree = SOURCE_ROOT; };
+		966B24052B76451F00C0CAC4 /* RuneDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuneDetailScreen.swift; path = RiotGamesDictionary/screens/championDetail/struct/RuneDetailScreen.swift; sourceTree = SOURCE_ROOT; };
+		966B24072B764D0700C0CAC4 /* SummonerDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummonerDetailStore.swift; path = RiotGamesDictionary/screens/championDetail/struct/SummonerDetailStore.swift; sourceTree = SOURCE_ROOT; };
+		966B24092B764DE800C0CAC4 /* SummonerDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummonerDetailScreen.swift; path = RiotGamesDictionary/screens/championDetail/struct/SummonerDetailScreen.swift; sourceTree = SOURCE_ROOT; };
+		96CDF7462B74B8EF00482F2F /* ChampionDetailStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionDetailStruct.swift; sourceTree = "<group>"; };
+		96D8C5012B70C1E200369E16 /* AppResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
+		96D8FC0C2B7A3270005BE36F /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		96D8FC102B7A490B005BE36F /* LoLAcountNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoLAcountNetworkService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7193F9E12B2A07A200208B46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				715775132B54601D00CA92F8 /* UI in Frameworks */,
+				7193F9F82B2A0BCC00208B46 /* ComposableArchitecture in Frameworks */,
+				715775042B4C059F00CA92F8 /* DIProject in Frameworks */,
+				715775062B4C05AD00CA92F8 /* LoLDictionaryNetwork in Frameworks */,
+				71E510C02B79425100188C71 /* AccountRiotApiNetwork in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7102F3CE2B2EF9A8003F22A8 /* methods */ = {
+			isa = PBXGroup;
+			children = (
+				7102F3CF2B2EF9B9003F22A8 /* di */,
+			);
+			path = methods;
+			sourceTree = "<group>";
+		};
+		7102F3CF2B2EF9B9003F22A8 /* di */ = {
+			isa = PBXGroup;
+			children = (
+				7102F3D42B2F44B2003F22A8 /* Services */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		7102F3D02B2EF9D3003F22A8 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				961F09D52B7A22F600DF5E78 /* settings */,
+				718BBC712B66A37F00503489 /* runeDetail */,
+				718BBC702B66A32200503489 /* summonerSpellDetail */,
+				718BBC6F2B66A27400503489 /* itemDetail */,
+				718BBC6E2B66A24900503489 /* championDetail */,
+				718BBC6D2B66A20700503489 /* gamesHistory */,
+				718BBC6C2B66A1F900503489 /* auth */,
+				718BBC6A2B66A1A700503489 /* root */,
+				7157750A2B4F180900CA92F8 /* dictionary */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		7102F3D42B2F44B2003F22A8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				715775072B4D9D2300CA92F8 /* network */,
+				7102F3DF2B2F450B003F22A8 /* resoures */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7102F3DF2B2F450B003F22A8 /* resoures */ = {
+			isa = PBXGroup;
+			children = (
+				715C41572B75312C00BE917D /* KeychainService.swift */,
+				71C5595D2B78FFBB00EB1223 /* CertificatesService.swift */,
+				71C5595F2B78FFC800EB1223 /* ObfuscatorService.swift */,
+				7102F3D62B2F44B2003F22A8 /* Certificates.swift */,
+				7102F3D72B2F44B2003F22A8 /* Obfuscator.swift */,
+				7102F3D82B2F44B2003F22A8 /* Keychain.swift */,
+			);
+			path = resoures;
+			sourceTree = "<group>";
+		};
+		715775022B4C059F00CA92F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		715775072B4D9D2300CA92F8 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				96D8FC0F2B7A48C7005BE36F /* acount */,
+				96D8FC0E2B7A48B1005BE36F /* dictionary */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		7157750A2B4F180900CA92F8 /* dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				9668669E2B7379C800AB0788 /* struct */,
+				7157750C2B4F185A00CA92F8 /* flux */,
+				7157750B2B4F184E00CA92F8 /* ui */,
+			);
+			path = dictionary;
+			sourceTree = "<group>";
+		};
+		7157750B2B4F184E00CA92F8 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				7157750D2B4F187300CA92F8 /* DictionaryScreen.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		7157750C2B4F185A00CA92F8 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+				7157750F2B4F188F00CA92F8 /* DictionaryStore.swift */,
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		715C415B2B776F4B00BE917D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				715C415C2B776F6600BE917D /* ImageCache */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		715C415C2B776F6600BE917D /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				715C41632B77993A00BE917D /* ImageLoader.swift */,
+				715C41652B77A27700BE917D /* ImageLoaderKey.swift */,
+				715C41672B77A2CB00BE917D /* TestCacheImageView.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
+		718BBC6A2B66A1A700503489 /* root */ = {
+			isa = PBXGroup;
+			children = (
+				718BBC732B66B83000503489 /* flux */,
+				718BBC722B66B82600503489 /* ui */,
+			);
+			path = root;
+			sourceTree = "<group>";
+		};
+		718BBC6C2B66A1F900503489 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				718BBC762B66B85200503489 /* flux */,
+				718BBC772B66B85B00503489 /* ui */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		718BBC6D2B66A20700503489 /* gamesHistory */ = {
+			isa = PBXGroup;
+			children = (
+				718BBC792B66B87000503489 /* flux */,
+				718BBC782B66B86A00503489 /* ui */,
+			);
+			path = gamesHistory;
+			sourceTree = "<group>";
+		};
+		718BBC6E2B66A24900503489 /* championDetail */ = {
+			isa = PBXGroup;
+			children = (
+				96CDF7452B74B8D000482F2F /* struct */,
+				718BBC7B2B66B87E00503489 /* flux */,
+				718BBC7A2B66B87800503489 /* ui */,
+			);
+			path = championDetail;
+			sourceTree = "<group>";
+		};
+		718BBC6F2B66A27400503489 /* itemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				718BBC7D2B66B88E00503489 /* flux */,
+				718BBC7C2B66B88500503489 /* ui */,
+			);
+			path = itemDetail;
+			sourceTree = "<group>";
+		};
+		718BBC702B66A32200503489 /* summonerSpellDetail */ = {
+			isa = PBXGroup;
+			children = (
+				718BBC7F2B66B8A700503489 /* flux */,
+				718BBC7E2B66B8A200503489 /* ui */,
+			);
+			path = summonerSpellDetail;
+			sourceTree = "<group>";
+		};
+		718BBC712B66A37F00503489 /* runeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				718BBC812B66BC3600503489 /* flux */,
+				718BBC802B66BC3000503489 /* ui */,
+			);
+			path = runeDetail;
+			sourceTree = "<group>";
+		};
+		718BBC722B66B82600503489 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				7193F9E92B2A07A200208B46 /* RootView.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		718BBC732B66B83000503489 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+				718BBC822B6806B700503489 /* RootStore.swift */,
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		718BBC762B66B85200503489 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		718BBC772B66B85B00503489 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		718BBC782B66B86A00503489 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		718BBC792B66B87000503489 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		718BBC7A2B66B87800503489 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				71E6B8FE2B6D5C010075C23E /* ChampionDetailScreen.swift */,
+				715C41592B7546B200BE917D /* ChampionSkinsDetailView.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		718BBC7B2B66B87E00503489 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+				71E6B8FC2B6D58E80075C23E /* ChampionDetailStore.swift */,
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		718BBC7C2B66B88500503489 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		718BBC7D2B66B88E00503489 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		718BBC7E2B66B8A200503489 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				966B24092B764DE800C0CAC4 /* SummonerDetailScreen.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		718BBC7F2B66B8A700503489 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+				966B24072B764D0700C0CAC4 /* SummonerDetailStore.swift */,
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		718BBC802B66BC3000503489 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				966B24052B76451F00C0CAC4 /* RuneDetailScreen.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		718BBC812B66BC3600503489 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+				966B24032B7644FF00C0CAC4 /* RuneDetailStore.swift */,
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		7193F9DB2B2A07A200208B46 = {
+			isa = PBXGroup;
+			children = (
+				7193F9F92B2A0F3300208B46 /* LoLDictionaryNetwork */,
+				71E510BE2B79420800188C71 /* AccountRiotApiNetwork */,
+				715775112B545A2200CA92F8 /* UI */,
+				715775012B4C02BD00CA92F8 /* DIProject */,
+				7193F9E62B2A07A200208B46 /* RiotGamesDictionary */,
+				7193F9E52B2A07A200208B46 /* Products */,
+				715775022B4C059F00CA92F8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7193F9E52B2A07A200208B46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7193F9E42B2A07A200208B46 /* RiotGamesDictionary.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7193F9E62B2A07A200208B46 /* RiotGamesDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				96D8C5002B70C1B300369E16 /* res */,
+				7102F3D02B2EF9D3003F22A8 /* screens */,
+				7102F3CE2B2EF9A8003F22A8 /* methods */,
+				7193F9E72B2A07A200208B46 /* RiotGamesDictionaryApp.swift */,
+				7193F9EB2B2A07A300208B46 /* Assets.xcassets */,
+				7193F9ED2B2A07A300208B46 /* RiotGamesDictionary.entitlements */,
+				7193F9EE2B2A07A300208B46 /* Preview Content */,
+			);
+			path = RiotGamesDictionary;
+			sourceTree = "<group>";
+		};
+		7193F9EE2B2A07A300208B46 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7193F9EF2B2A07A300208B46 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		71E510B92B79124200188C71 /* cert */ = {
+			isa = PBXGroup;
+			children = (
+				71E510BA2B79126D00188C71 /* cert */,
+			);
+			path = cert;
+			sourceTree = "<group>";
+		};
+		71E510BA2B79126D00188C71 /* cert */ = {
+			isa = PBXGroup;
+			children = (
+				71E510BB2B79126D00188C71 /* ddragon.leagueoflegends.com.cer */,
+			);
+			name = cert;
+			sourceTree = "<group>";
+		};
+		961F09D52B7A22F600DF5E78 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				961F09D62B7A230000DF5E78 /* flux */,
+				961F09D72B7A230600DF5E78 /* struct */,
+				961F09D82B7A230C00DF5E78 /* ui */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		961F09D62B7A230000DF5E78 /* flux */ = {
+			isa = PBXGroup;
+			children = (
+				961F09D92B7A232000DF5E78 /* SettingsStore.swift */,
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
+		961F09D72B7A230600DF5E78 /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				961F09DB2B7A25DC00DF5E78 /* SettingsStruct.swift */,
+			);
+			path = struct;
+			sourceTree = "<group>";
+		};
+		961F09D82B7A230C00DF5E78 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				96D8FC0C2B7A3270005BE36F /* SettingsScreen.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		9668669E2B7379C800AB0788 /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				9668669F2B7379F200AB0788 /* DictionaryStruct.swift */,
+			);
+			path = struct;
+			sourceTree = "<group>";
+		};
+		96CDF7452B74B8D000482F2F /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				96CDF7462B74B8EF00482F2F /* ChampionDetailStruct.swift */,
+			);
+			path = struct;
+			sourceTree = "<group>";
+		};
+		96D8C5002B70C1B300369E16 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				71E510B92B79124200188C71 /* cert */,
+				715C415B2B776F4B00BE917D /* UI */,
+				96D8C5012B70C1E200369E16 /* AppResources.swift */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		96D8FC0E2B7A48B1005BE36F /* dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				7102F3D92B2F44B2003F22A8 /* URLSessionRequestBuilderFactoryLoLDictionary.swift */,
+				715775082B4D9DAA00CA92F8 /* LoLDictionaryNetworkService.swift */,
+			);
+			path = dictionary;
+			sourceTree = "<group>";
+		};
+		96D8FC0F2B7A48C7005BE36F /* acount */ = {
+			isa = PBXGroup;
+			children = (
+				96D8FC102B7A490B005BE36F /* LoLAcountNetworkService.swift */,
+			);
+			path = acount;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7193F9E32B2A07A200208B46 /* RiotGamesDictionary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7193F9F32B2A07A300208B46 /* Build configuration list for PBXNativeTarget "RiotGamesDictionary" */;
+			buildPhases = (
+				7193F9E02B2A07A200208B46 /* Sources */,
+				7193F9E12B2A07A200208B46 /* Frameworks */,
+				7193F9E22B2A07A200208B46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RiotGamesDictionary;
+			packageProductDependencies = (
+				7193F9F72B2A0BCC00208B46 /* ComposableArchitecture */,
+				715775032B4C059F00CA92F8 /* DIProject */,
+				715775052B4C05AD00CA92F8 /* LoLDictionaryNetwork */,
+				715775122B54601D00CA92F8 /* UI */,
+				71E510BF2B79425100188C71 /* AccountRiotApiNetwork */,
+			);
+			productName = RiotGamesDictionary;
+			productReference = 7193F9E42B2A07A200208B46 /* RiotGamesDictionary.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7193F9DC2B2A07A200208B46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					7193F9E32B2A07A200208B46 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 7193F9DF2B2A07A200208B46 /* Build configuration list for PBXProject "RiotGamesDictionary" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7193F9DB2B2A07A200208B46;
+			packageReferences = (
+				7193F9F62B2A0BCC00208B46 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
+			productRefGroup = 7193F9E52B2A07A200208B46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7193F9E32B2A07A200208B46 /* RiotGamesDictionary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7193F9E22B2A07A200208B46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7193F9F02B2A07A300208B46 /* Preview Assets.xcassets in Resources */,
+				71E510BD2B7912A300188C71 /* ddragon.leagueoflegends.com.cer in Resources */,
+				7193F9EC2B2A07A300208B46 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7193F9E02B2A07A200208B46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7193F9EA2B2A07A200208B46 /* RootView.swift in Sources */,
+				966B240A2B764DE800C0CAC4 /* SummonerDetailScreen.swift in Sources */,
+				715775102B4F188F00CA92F8 /* DictionaryStore.swift in Sources */,
+				7193F9E82B2A07A200208B46 /* RiotGamesDictionaryApp.swift in Sources */,
+				7102F3DB2B2F44B2003F22A8 /* Certificates.swift in Sources */,
+				71E6B8FD2B6D58E80075C23E /* ChampionDetailStore.swift in Sources */,
+				96CDF7472B74B8EF00482F2F /* ChampionDetailStruct.swift in Sources */,
+				7102F3DC2B2F44B2003F22A8 /* Obfuscator.swift in Sources */,
+				966B24082B764D0700C0CAC4 /* SummonerDetailStore.swift in Sources */,
+				961F09DC2B7A25DC00DF5E78 /* SettingsStruct.swift in Sources */,
+				718BBC832B6806B700503489 /* RootStore.swift in Sources */,
+				966B24042B7644FF00C0CAC4 /* RuneDetailStore.swift in Sources */,
+				7102F3DD2B2F44B2003F22A8 /* Keychain.swift in Sources */,
+				7102F3DE2B2F44B2003F22A8 /* URLSessionRequestBuilderFactoryLoLDictionary.swift in Sources */,
+				966B24062B76451F00C0CAC4 /* RuneDetailScreen.swift in Sources */,
+				96D8C5022B70C1E200369E16 /* AppResources.swift in Sources */,
+				71C5595E2B78FFBB00EB1223 /* CertificatesService.swift in Sources */,
+				96D8FC0D2B7A3270005BE36F /* SettingsScreen.swift in Sources */,
+				96D8FC112B7A490B005BE36F /* LoLAcountNetworkService.swift in Sources */,
+				715C415A2B7546B200BE917D /* ChampionSkinsDetailView.swift in Sources */,
+				715C41642B77993A00BE917D /* ImageLoader.swift in Sources */,
+				966866A02B7379F200AB0788 /* DictionaryStruct.swift in Sources */,
+				715775092B4D9DAA00CA92F8 /* LoLDictionaryNetworkService.swift in Sources */,
+				715C41582B75312C00BE917D /* KeychainService.swift in Sources */,
+				7157750E2B4F187300CA92F8 /* DictionaryScreen.swift in Sources */,
+				961F09DA2B7A232000DF5E78 /* SettingsStore.swift in Sources */,
+				715C41682B77A2CB00BE917D /* TestCacheImageView.swift in Sources */,
+				71E6B8FF2B6D5C010075C23E /* ChampionDetailScreen.swift in Sources */,
+				715C41662B77A27700BE917D /* ImageLoaderKey.swift in Sources */,
+				71C559602B78FFC800EB1223 /* ObfuscatorService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7193F9F12B2A07A300208B46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7193F9F22B2A07A300208B46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		7193F9F42B2A07A300208B46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RiotGamesDictionary/RiotGamesDictionary.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"RiotGamesDictionary/Preview Content\"";
+				DEVELOPMENT_TEAM = XNL27493M5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.weizy.project.riot.RiotGamesDictionary;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7193F9F52B2A07A300208B46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RiotGamesDictionary/RiotGamesDictionary.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"RiotGamesDictionary/Preview Content\"";
+				DEVELOPMENT_TEAM = XNL27493M5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.weizy.project.riot.RiotGamesDictionary;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7193F9DF2B2A07A200208B46 /* Build configuration list for PBXProject "RiotGamesDictionary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7193F9F12B2A07A300208B46 /* Debug */,
+				7193F9F22B2A07A300208B46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7193F9F32B2A07A300208B46 /* Build configuration list for PBXNativeTarget "RiotGamesDictionary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7193F9F42B2A07A300208B46 /* Debug */,
+				7193F9F52B2A07A300208B46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7193F9F62B2A0BCC00208B46 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		715775032B4C059F00CA92F8 /* DIProject */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DIProject;
+		};
+		715775052B4C05AD00CA92F8 /* LoLDictionaryNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LoLDictionaryNetwork;
+		};
+		715775122B54601D00CA92F8 /* UI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UI;
+		};
+		7193F9F72B2A0BCC00208B46 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7193F9F62B2A0BCC00208B46 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		71E510BF2B79425100188C71 /* AccountRiotApiNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AccountRiotApiNetwork;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7193F9DC2B2A07A200208B46 /* Project object */;
+}

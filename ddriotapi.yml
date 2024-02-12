@@ -1,0 +1,2654 @@
+openapi: 3.0.3
+info:
+  title: DDragonLeagueOfLegends
+  description: riotgames.com
+  version: 1.0.0
+servers:
+- url: https://ddragon.leagueoflegends.com/
+tags:
+- name: dataDDragonLeagueOfLegends
+  description:  Data Dragon League of Legends
+
+paths:
+    /cdn/{version}/data/{localization}/champion.json:
+        get:
+          tags:
+          - dataChampions
+          summary: Champions Data List
+          operationId: getDataChampions
+          parameters:
+          - name: version
+            in: path
+            description: version
+            required: true
+            schema:
+              type: string
+          - name: localization
+            in: path
+            description: localization
+            required: true
+            schema:
+              type: string
+          responses:
+            "200":
+              description: success
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ChampionsAllData'
+            default:
+              description: enexpected error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorModel'
+                    
+    /cdn/{version}/data/{localization}/champion/{name}.json:
+        get:
+          tags:
+          - detailChampion
+          summary: detail Champion
+          operationId: getChampionDetail
+          parameters:
+          - name: version
+            in: path
+            description: version
+            required: true
+            schema:
+              type: string
+          - name: localization
+            in: path
+            description: localization
+            required: true
+            schema:
+              type: string
+          - name: name
+            in: path
+            description: date
+            required: true
+            schema:
+              type: string
+          responses:
+            "200":
+              description: success
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ChampionDetailData'
+            default:
+              description: enexpected error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorModel'
+
+    /cdn/{version}/data/{localization}/runesReforged.json:
+        get:
+          tags:
+          - detailRunes
+          summary: Runes
+          operationId: getRunes
+          parameters:
+          - name: version
+            in: path
+            description: version
+            required: true
+            schema:
+              type: string
+          - name: localization
+            in: path
+            description: localization
+            required: true
+            schema:
+              type: string
+          responses:
+            "200":
+              description: success
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RuneObj'
+            default:
+              description: enexpected error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorModel'
+
+    /cdn/{version}/data/{localization}/summoner.json:
+        get:
+          tags:
+          - dataSummoner
+          summary: Champions Data List
+          operationId: getDataSummoners
+          parameters:
+          - name: version
+            in: path
+            description: version
+            required: true
+            schema:
+              type: string
+          - name: localization
+            in: path
+            description: localization
+            required: true
+            schema:
+              type: string
+          responses:
+            "200":
+              description: success
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/SummonerAllData'
+            default:
+              description: enexpected error
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ErrorModel'
+
+components:
+  schemas:
+  
+    ErrorModel:
+      required:
+      - code
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          maximum: 600
+          minimum: 100
+          type: integer
+
+    ChampionsAllData:
+      required:
+        - "type"
+        - "format"
+        - "version"
+        - "data"
+      properties:
+        type:
+          type: "string"
+        format:
+          type: "string"
+        version:
+          type: "string"
+        data:
+            $ref: '#/components/schemas/ChampionsList'
+
+    ChampionsList:
+      required:
+        - "Aatrox"
+        - "Ahri"
+        - "Akali"
+        - "Akshan"
+        - "Alistar"
+        - "Amumu"
+        - "Anivia"
+        - "Annie"
+        - "Aphelios"
+        - "Ashe"
+        - "AurelionSol"
+        - "Azir"
+        - "Bard"
+        - "Belveth"
+        - "Blitzcrank"
+        - "Brand"
+        - "Braum"
+        - "Briar"
+        - "Caitlyn"
+        - "Camille"
+        - "Cassiopeia"
+        - "Chogath"
+        - "Corki"
+        - "Darius"
+        - "Diana"
+        - "Draven"
+        - "DrMundo"
+        - "Ekko"
+        - "Elise"
+        - "Evelynn"
+        - "Ezreal"
+        - "Fiddlesticks"
+        - "Fiora"
+        - "Fizz"
+        - "Galio"
+        - "Gangplank"
+        - "Garen"
+        - "Gnar"
+        - "Gragas"
+        - "Graves"
+        - "Gwen"
+        - "Hecarim"
+        - "Heimerdinger"
+        - "Illaoi"
+        - "Irelia"
+        - "Ivern"
+        - "Janna"
+        - "JarvanIV"
+        - "Jax"
+        - "Jayce"
+        - "Jhin"
+        - "Jinx"
+        - "Kaisa"
+        - "Kalista"
+        - "Karma"
+        - "Karthus"
+        - "Kassadin"
+        - "Katarina"
+        - "Kayle"
+        - "Kayn"
+        - "Kennen"
+        - "Khazix"
+        - "Kindred"
+        - "Kled"
+        - "KogMaw"
+        - "KSante"
+        - "Leblanc"
+        - "LeeSin"
+        - "Leona"
+        - "Lillia"
+        - "Lissandra"
+        - "Lucian"
+        - "Lulu"
+        - "Lux"
+        - "Malphite"
+        - "Malzahar"
+        - "Maokai"
+        - "MasterYi"
+        - "Milio"
+        - "MissFortune"
+        - "MonkeyKing"
+        - "Mordekaiser"
+        - "Morgana"
+        - "Naafiri"
+        - "Nami"
+        - "Nasus"
+        - "Nautilus"
+        - "Neeko"
+        - "Nidalee"
+        - "Nilah"
+        - "Nocturne"
+        - "Nunu"
+        - "Olaf"
+        - "Orianna"
+        - "Ornn"
+        - "Pantheon"
+        - "Poppy"
+        - "Pyke"
+        - "Qiyana"
+        - "Quinn"
+        - "Rakan"
+        - "Rammus"
+        - "RekSai"
+        - "Rell"
+        - "Renata"
+        - "Renekton"
+        - "Rengar"
+        - "Riven"
+        - "Rumble"
+        - "Ryze"
+        - "Samira"
+        - "Sejuani"
+        - "Senna"
+        - "Seraphine"
+        - "Sett"
+        - "Shaco"
+        - "Shen"
+        - "Shyvana"
+        - "Singed"
+        - "Sion"
+        - "Sivir"
+        - "Skarner"
+        - "Sona"
+        - "Soraka"
+        - "Swain"
+        - "Sylas"
+        - "Syndra"
+        - "TahmKench"
+        - "Taliyah"
+        - "Talon"
+        - "Taric"
+        - "Teemo"
+        - "Thresh"
+        - "Tristana"
+        - "Trundle"
+        - "Tryndamere"
+        - "TwistedFate"
+        - "Twitch"
+        - "Udyr"
+        - "Urgot"
+        - "Varus"
+        - "Vayne"
+        - "Veigar"
+        - "Velkoz"
+        - "Vex"
+        - "Vi"
+        - "Viego"
+        - "Viktor"
+        - "Vladimir"
+        - "Volibear"
+        - "Warwick"
+        - "Xayah"
+        - "Xerath"
+        - "XinZhao"
+        - "Yasuo"
+        - "Yone"
+        - "Yorick"
+        - "Yuumi"
+        - "Zac"
+        - "Zed"
+        - "Zeri"
+        - "Ziggs"
+        - "Zilean"
+        - "Zoe"
+        - "Zyra"
+      properties:
+        Aatrox:
+            $ref: '#/components/schemas/ChampionObj'
+        Ahri:
+            $ref: '#/components/schemas/ChampionObj'
+        Akali:
+            $ref: '#/components/schemas/ChampionObj'
+        Akshan:
+            $ref: '#/components/schemas/ChampionObj'
+        Alistar:
+            $ref: '#/components/schemas/ChampionObj'
+        Amumu:
+            $ref: '#/components/schemas/ChampionObj'
+        Anivia:
+            $ref: '#/components/schemas/ChampionObj'
+        Annie:
+            $ref: '#/components/schemas/ChampionObj'
+        Aphelios:
+            $ref: '#/components/schemas/ChampionObj'
+        Ashe:
+            $ref: '#/components/schemas/ChampionObj'
+        AurelionSol:
+            $ref: '#/components/schemas/ChampionObj'
+        Azir:
+            $ref: '#/components/schemas/ChampionObj'
+        Bard:
+            $ref: '#/components/schemas/ChampionObj'
+        Belveth:
+            $ref: '#/components/schemas/ChampionObj'
+        Blitzcrank:
+            $ref: '#/components/schemas/ChampionObj'
+        Brand:
+            $ref: '#/components/schemas/ChampionObj'
+        Braum:
+            $ref: '#/components/schemas/ChampionObj'
+        Briar:
+            $ref: '#/components/schemas/ChampionObj'
+        Caitlyn:
+            $ref: '#/components/schemas/ChampionObj'
+        Camille:
+            $ref: '#/components/schemas/ChampionObj'
+        Cassiopeia:
+            $ref: '#/components/schemas/ChampionObj'
+        Chogath:
+            $ref: '#/components/schemas/ChampionObj'
+        Corki:
+            $ref: '#/components/schemas/ChampionObj'
+        Darius:
+            $ref: '#/components/schemas/ChampionObj'
+        Diana:
+            $ref: '#/components/schemas/ChampionObj'
+        Draven:
+            $ref: '#/components/schemas/ChampionObj'
+        DrMundo:
+            $ref: '#/components/schemas/ChampionObj'
+        Ekko:
+            $ref: '#/components/schemas/ChampionObj'
+        Elise:
+            $ref: '#/components/schemas/ChampionObj'
+        Evelynn:
+            $ref: '#/components/schemas/ChampionObj'
+        Ezreal:
+            $ref: '#/components/schemas/ChampionObj'
+        Fiddlesticks:
+            $ref: '#/components/schemas/ChampionObj'
+        Fiora:
+            $ref: '#/components/schemas/ChampionObj'
+        Fizz:
+            $ref: '#/components/schemas/ChampionObj'
+        Galio:
+            $ref: '#/components/schemas/ChampionObj'
+        Gangplank:
+            $ref: '#/components/schemas/ChampionObj'
+        Garen:
+            $ref: '#/components/schemas/ChampionObj'
+        Gnar:
+            $ref: '#/components/schemas/ChampionObj'
+        Gragas:
+            $ref: '#/components/schemas/ChampionObj'
+        Graves:
+            $ref: '#/components/schemas/ChampionObj'
+        Gwen:
+            $ref: '#/components/schemas/ChampionObj'
+        Hecarim:
+            $ref: '#/components/schemas/ChampionObj'
+        Heimerdinger:
+            $ref: '#/components/schemas/ChampionObj'
+        Illaoi:
+            $ref: '#/components/schemas/ChampionObj'
+        Irelia:
+            $ref: '#/components/schemas/ChampionObj'
+        Ivern:
+            $ref: '#/components/schemas/ChampionObj'
+        Janna:
+            $ref: '#/components/schemas/ChampionObj'
+        JarvanIV:
+            $ref: '#/components/schemas/ChampionObj'
+        Jax:
+            $ref: '#/components/schemas/ChampionObj'
+        Jayce:
+            $ref: '#/components/schemas/ChampionObj'
+        Jhin:
+            $ref: '#/components/schemas/ChampionObj'
+        Jinx:
+            $ref: '#/components/schemas/ChampionObj'
+        Kaisa:
+            $ref: '#/components/schemas/ChampionObj'
+        Kalista:
+            $ref: '#/components/schemas/ChampionObj'
+        Karma:
+            $ref: '#/components/schemas/ChampionObj'
+        Karthus:
+            $ref: '#/components/schemas/ChampionObj'
+        Kassadin:
+            $ref: '#/components/schemas/ChampionObj'
+        Katarina:
+            $ref: '#/components/schemas/ChampionObj'
+        Kayle:
+            $ref: '#/components/schemas/ChampionObj'
+        Kayn:
+            $ref: '#/components/schemas/ChampionObj'
+        Kennen:
+            $ref: '#/components/schemas/ChampionObj'
+        Khazix:
+            $ref: '#/components/schemas/ChampionObj'
+        Kindred:
+            $ref: '#/components/schemas/ChampionObj'
+        Kled:
+            $ref: '#/components/schemas/ChampionObj'
+        KogMaw:
+            $ref: '#/components/schemas/ChampionObj'
+        KSante:
+            $ref: '#/components/schemas/ChampionObj'
+        Leblanc:
+            $ref: '#/components/schemas/ChampionObj'
+        LeeSin:
+            $ref: '#/components/schemas/ChampionObj'
+        Leona:
+            $ref: '#/components/schemas/ChampionObj'
+        Lillia:
+            $ref: '#/components/schemas/ChampionObj'
+        Lissandra:
+            $ref: '#/components/schemas/ChampionObj'
+        Lucian:
+            $ref: '#/components/schemas/ChampionObj'
+        Lulu:
+            $ref: '#/components/schemas/ChampionObj'
+        Lux:
+            $ref: '#/components/schemas/ChampionObj'
+        Malphite:
+            $ref: '#/components/schemas/ChampionObj'
+        Malzahar:
+            $ref: '#/components/schemas/ChampionObj'
+        Maokai:
+            $ref: '#/components/schemas/ChampionObj'
+        MasterYi:
+             $ref: '#/components/schemas/ChampionObj'
+        Milio:
+             $ref: '#/components/schemas/ChampionObj'
+        MissFortune:
+             $ref: '#/components/schemas/ChampionObj'
+        MonkeyKing:
+             $ref: '#/components/schemas/ChampionObj'
+        Mordekaiser:
+             $ref: '#/components/schemas/ChampionObj'
+        Morgana:
+             $ref: '#/components/schemas/ChampionObj'
+        Naafiri:
+             $ref: '#/components/schemas/ChampionObj'
+        Nami:
+             $ref: '#/components/schemas/ChampionObj'
+        Nasus:
+             $ref: '#/components/schemas/ChampionObj'
+        Nautilus:
+             $ref: '#/components/schemas/ChampionObj'
+        Neeko:
+             $ref: '#/components/schemas/ChampionObj'
+        Nidalee:
+             $ref: '#/components/schemas/ChampionObj'
+        Nilah:
+             $ref: '#/components/schemas/ChampionObj'
+        Nocturne:
+             $ref: '#/components/schemas/ChampionObj'
+        Nunu:
+             $ref: '#/components/schemas/ChampionObj'
+        Olaf:
+             $ref: '#/components/schemas/ChampionObj'
+        Orianna:
+             $ref: '#/components/schemas/ChampionObj'
+        Ornn:
+             $ref: '#/components/schemas/ChampionObj'
+        Pantheon:
+             $ref: '#/components/schemas/ChampionObj'
+        Poppy:
+             $ref: '#/components/schemas/ChampionObj'
+        Pyke:
+             $ref: '#/components/schemas/ChampionObj'
+        Qiyana:
+             $ref: '#/components/schemas/ChampionObj'
+        Quinn:
+             $ref: '#/components/schemas/ChampionObj'
+        Rakan:
+             $ref: '#/components/schemas/ChampionObj'
+        Rammus:
+             $ref: '#/components/schemas/ChampionObj'
+        RekSai:
+             $ref: '#/components/schemas/ChampionObj'
+        Rell:
+             $ref: '#/components/schemas/ChampionObj'
+        Renata:
+             $ref: '#/components/schemas/ChampionObj'
+        Renekton:
+             $ref: '#/components/schemas/ChampionObj'
+        Rengar:
+             $ref: '#/components/schemas/ChampionObj'
+        Riven:
+             $ref: '#/components/schemas/ChampionObj'
+        Rumble:
+             $ref: '#/components/schemas/ChampionObj'
+        Ryze:
+             $ref: '#/components/schemas/ChampionObj'
+        Samira:
+             $ref: '#/components/schemas/ChampionObj'
+        Sejuani:
+             $ref: '#/components/schemas/ChampionObj'
+        Senna:
+             $ref: '#/components/schemas/ChampionObj'
+        Seraphine:
+             $ref: '#/components/schemas/ChampionObj'
+        Sett:
+             $ref: '#/components/schemas/ChampionObj'
+        Shaco:
+             $ref: '#/components/schemas/ChampionObj'
+        Shen:
+             $ref: '#/components/schemas/ChampionObj'
+        Shyvana:
+             $ref: '#/components/schemas/ChampionObj'
+        Singed:
+             $ref: '#/components/schemas/ChampionObj'
+        Sion:
+             $ref: '#/components/schemas/ChampionObj'
+        Sivir:
+             $ref: '#/components/schemas/ChampionObj'
+        Skarner:
+             $ref: '#/components/schemas/ChampionObj'
+        Sona:
+             $ref: '#/components/schemas/ChampionObj'
+        Soraka:
+             $ref: '#/components/schemas/ChampionObj'
+        Swain:
+             $ref: '#/components/schemas/ChampionObj'
+        Sylas:
+             $ref: '#/components/schemas/ChampionObj'
+        Syndra:
+             $ref: '#/components/schemas/ChampionObj'
+        TahmKench:
+             $ref: '#/components/schemas/ChampionObj'
+        Taliyah:
+             $ref: '#/components/schemas/ChampionObj'
+        Talon:
+             $ref: '#/components/schemas/ChampionObj'
+        Taric:
+             $ref: '#/components/schemas/ChampionObj'
+        Teemo:
+             $ref: '#/components/schemas/ChampionObj'
+        Thresh:
+             $ref: '#/components/schemas/ChampionObj'
+        Tristana:
+             $ref: '#/components/schemas/ChampionObj'
+        Trundle:
+             $ref: '#/components/schemas/ChampionObj'
+        Tryndamere:
+             $ref: '#/components/schemas/ChampionObj'
+        TwistedFate:
+             $ref: '#/components/schemas/ChampionObj'
+        Twitch:
+             $ref: '#/components/schemas/ChampionObj'
+        Udyr:
+             $ref: '#/components/schemas/ChampionObj'
+        Urgot:
+             $ref: '#/components/schemas/ChampionObj'
+        Varus:
+             $ref: '#/components/schemas/ChampionObj'
+        Vayne:
+             $ref: '#/components/schemas/ChampionObj'
+        Veigar:
+             $ref: '#/components/schemas/ChampionObj'
+        Velkoz:
+             $ref: '#/components/schemas/ChampionObj'
+        Vex:
+             $ref: '#/components/schemas/ChampionObj'
+        Vi:
+             $ref: '#/components/schemas/ChampionObj'
+        Viego:
+             $ref: '#/components/schemas/ChampionObj'
+        Viktor:
+             $ref: '#/components/schemas/ChampionObj'
+        Vladimir:
+             $ref: '#/components/schemas/ChampionObj'
+        Volibear:
+             $ref: '#/components/schemas/ChampionObj'
+        Warwick:
+             $ref: '#/components/schemas/ChampionObj'
+        Xayah:
+             $ref: '#/components/schemas/ChampionObj'
+        Xerath:
+             $ref: '#/components/schemas/ChampionObj'
+        XinZhao:
+             $ref: '#/components/schemas/ChampionObj'
+        Yasuo:
+             $ref: '#/components/schemas/ChampionObj'
+        Yone:
+             $ref: '#/components/schemas/ChampionObj'
+        Yorick:
+             $ref: '#/components/schemas/ChampionObj'
+        Yuumi:
+             $ref: '#/components/schemas/ChampionObj'
+        Zac:
+             $ref: '#/components/schemas/ChampionObj'
+        Zed:
+             $ref: '#/components/schemas/ChampionObj'
+        Zeri:
+             $ref: '#/components/schemas/ChampionObj'
+        Ziggs:
+              $ref: '#/components/schemas/ChampionObj'
+        Zilean:
+              $ref: '#/components/schemas/ChampionObj'
+        Zoe:
+              $ref: '#/components/schemas/ChampionObj'
+        Zyra:
+              $ref: '#/components/schemas/ChampionObj'
+      type: "object"
+
+    ChampionObj:
+      required:
+        - "version"
+        - "id"
+        - "key"
+        - "name"
+        - "title"
+        - "blurb"
+        - "info"
+        - "image"
+        - "tags"
+        - "partype"
+        - "stats"
+      properties:
+        version:
+          type: "string"
+        id:
+          type: "string"
+        key:
+          type: "string"
+        name:
+          type: "string"
+        title:
+          type: "string"
+        blurb:
+          type: "string"
+        info:
+            $ref: '#/components/schemas/InfoObj'
+        image:
+            $ref: '#/components/schemas/ImageObj'
+        tags:
+          type: "array"
+          items:
+            type: "string"
+        partype:
+          type: "string"
+        stats:
+            $ref: '#/components/schemas/StatsObj'
+      type: "object"
+   
+    InfoObj:
+      required:
+        - "attack"
+        - "defense"
+        - "magic"
+        - "difficulty"
+      properties:
+        attack:
+          type: "number"
+        defense:
+          type: "number"
+        magic:
+          type: "number"
+        difficulty:
+          type: "number"
+      type: "object"
+   
+    ImageObj:
+      required:
+        - "full"
+        - "sprite"
+        - "group"
+        - "x"
+        - "y"
+        - "w"
+        - "h"
+      properties:
+        full:
+          type: "string"
+        sprite:
+          type: "string"
+        group:
+          type: "string"
+        x:
+          type: "number"
+        y:
+          type: "number"
+        w:
+          type: "number"
+        h:
+          type: "number"
+      type: "object"
+  
+    StatsObj:
+      required:
+        - "hp"
+        - "hpperlevel"
+        - "mp"
+        - "mpperlevel"
+        - "movespeed"
+        - "armor"
+        - "armorperlevel"
+        - "spellblock"
+        - "spellblockperlevel"
+        - "attackrange"
+        - "hpregen"
+        - "hpregenperlevel"
+        - "mpregen"
+        - "mpregenperlevel"
+        - "crit"
+        - "critperlevel"
+        - "attackdamage"
+        - "attackdamageperlevel"
+        - "attackspeedperlevel"
+        - "attackspeed"
+      properties:
+        hp:
+          type: "number"
+        hpperlevel:
+          type: "number"
+        mp:
+          type: "number"
+        mpperlevel:
+          type: "number"
+        movespeed:
+          type: "number"
+        armor:
+          type: "number"
+        armorperlevel:
+          type: "number"
+        spellblock:
+          type: "number"
+        spellblockperlevel:
+          type: "number"
+        attackrange:
+          type: "number"
+        hpregen:
+          type: "number"
+        hpregenperlevel:
+          type: "number"
+        mpregen:
+          type: "number"
+        mpregenperlevel:
+          type: "number"
+        crit:
+          type: "number"
+        critperlevel:
+          type: "number"
+        attackdamage:
+          type: "number"
+        attackdamageperlevel:
+          type: "number"
+        attackspeedperlevel:
+          type: "number"
+        attackspeed:
+          type: "number"
+      type: "object"
+
+    ChampionDetailData:
+      required:
+        - "type"
+        - "format"
+        - "version"
+        - "data"
+      properties:
+        type:
+          type: "string"
+        format:
+          type: "string"
+        version:
+          type: "string"
+        data:
+            oneOf:
+              - $ref: '#/components/schemas/AatroxChampionDetailObj'
+              - $ref: '#/components/schemas/AhriChampionDetailObj'
+              - $ref: '#/components/schemas/AkaliChampionDetailObj'
+              - $ref: '#/components/schemas/AkshanChampionDetailObj'
+              - $ref: '#/components/schemas/AlistarChampionDetailObj'
+              - $ref: '#/components/schemas/AmumuChampionDetailObj'
+              - $ref: '#/components/schemas/AniviaChampionDetailObj'
+              - $ref: '#/components/schemas/AnnieChampionDetailObj'
+              - $ref: '#/components/schemas/ApheliosChampionDetailObj'
+              - $ref: '#/components/schemas/AsheChampionDetailObj'
+              - $ref: '#/components/schemas/AurelionSolChampionDetailObj'
+              - $ref: '#/components/schemas/AzirChampionDetailObj'
+              - $ref: '#/components/schemas/BardChampionDetailObj'
+              - $ref: '#/components/schemas/BelvethChampionDetailObj'
+              - $ref: '#/components/schemas/BlitzcrankChampionDetailObj'
+              - $ref: '#/components/schemas/BrandChampionDetailObj'
+              - $ref: '#/components/schemas/BraumChampionDetailObj'
+              - $ref: '#/components/schemas/BriarChampionDetailObj'
+              - $ref: '#/components/schemas/CaitlynChampionDetailObj'
+              - $ref: '#/components/schemas/CamilleChampionDetailObj'
+              - $ref: '#/components/schemas/CassiopeiaChampionDetailObj'
+              - $ref: '#/components/schemas/ChogathChampionDetailObj'
+              - $ref: '#/components/schemas/CorkiChampionDetailObj'
+              - $ref: '#/components/schemas/DariusChampionDetailObj'
+              - $ref: '#/components/schemas/DianaChampionDetailObj'
+              - $ref: '#/components/schemas/DravenChampionDetailObj'
+              - $ref: '#/components/schemas/DrMundoChampionDetailObj'
+              - $ref: '#/components/schemas/EkkoChampionDetailObj'
+              - $ref: '#/components/schemas/EliseChampionDetailObj'
+              - $ref: '#/components/schemas/EvelynnChampionDetailObj'
+              - $ref: '#/components/schemas/EzrealChampionDetailObj'
+              - $ref: '#/components/schemas/FiddlesticksChampionDetailObj'
+              - $ref: '#/components/schemas/FioraChampionDetailObj'
+              - $ref: '#/components/schemas/FizzChampionDetailObj'
+              - $ref: '#/components/schemas/GalioChampionDetailObj'
+              - $ref: '#/components/schemas/GangplankChampionDetailObj'
+              - $ref: '#/components/schemas/GarenChampionDetailObj'
+              - $ref: '#/components/schemas/GnarChampionDetailObj'
+              - $ref: '#/components/schemas/GragasChampionDetailObj'
+              - $ref: '#/components/schemas/GravesChampionDetailObj'
+              - $ref: '#/components/schemas/GwenChampionDetailObj'
+              - $ref: '#/components/schemas/HecarimChampionDetailObj'
+              - $ref: '#/components/schemas/HeimerdingerChampionDetailObj'
+              - $ref: '#/components/schemas/IllaoiChampionDetailObj'
+              - $ref: '#/components/schemas/IreliaChampionDetailObj'
+              - $ref: '#/components/schemas/IvernChampionDetailObj'
+              - $ref: '#/components/schemas/JannaChampionDetailObj'
+              - $ref: '#/components/schemas/JarvanIVChampionDetailObj'
+              - $ref: '#/components/schemas/JaxChampionDetailObj'
+              - $ref: '#/components/schemas/JayceChampionDetailObj'
+              - $ref: '#/components/schemas/JhinChampionDetailObj'
+              - $ref: '#/components/schemas/JinxChampionDetailObj'
+              - $ref: '#/components/schemas/KaisaChampionDetailObj'
+              - $ref: '#/components/schemas/KalistaChampionDetailObj'
+              - $ref: '#/components/schemas/KarmaChampionDetailObj'
+              - $ref: '#/components/schemas/KarthusChampionDetailObj'
+              - $ref: '#/components/schemas/KassadinChampionDetailObj'
+              - $ref: '#/components/schemas/KatarinaChampionDetailObj'
+              - $ref: '#/components/schemas/KayleChampionDetailObj'
+              - $ref: '#/components/schemas/KaynChampionDetailObj'
+              - $ref: '#/components/schemas/KennenChampionDetailObj'
+              - $ref: '#/components/schemas/KhazixChampionDetailObj'
+              - $ref: '#/components/schemas/KindredChampionDetailObj'
+              - $ref: '#/components/schemas/KledChampionDetailObj'
+              - $ref: '#/components/schemas/KogMawChampionDetailObj'
+              - $ref: '#/components/schemas/KSanteChampionDetailObj'
+              - $ref: '#/components/schemas/LeblancChampionDetailObj'
+              - $ref: '#/components/schemas/LeeSinChampionDetailObj'
+              - $ref: '#/components/schemas/LeonaChampionDetailObj'
+              - $ref: '#/components/schemas/LilliaChampionDetailObj'
+              - $ref: '#/components/schemas/LissandraChampionDetailObj'
+              - $ref: '#/components/schemas/LucianChampionDetailObj'
+              - $ref: '#/components/schemas/LuluChampionDetailObj'
+              - $ref: '#/components/schemas/LuxChampionDetailObj'
+              - $ref: '#/components/schemas/MalphiteChampionDetailObj'
+              - $ref: '#/components/schemas/MalzaharChampionDetailObj'
+              - $ref: '#/components/schemas/MaokaiChampionDetailObj'
+              - $ref: '#/components/schemas/MasterYiChampionDetailObj'
+              - $ref: '#/components/schemas/MilioChampionDetailObj'
+              - $ref: '#/components/schemas/MissFortuneChampionDetailObj'
+              - $ref: '#/components/schemas/MonkeyKingChampionDetailObj'
+              - $ref: '#/components/schemas/MordekaiserChampionDetailObj'
+              - $ref: '#/components/schemas/MorganaChampionDetailObj'
+              - $ref: '#/components/schemas/NaafiriChampionDetailObj'
+              - $ref: '#/components/schemas/NamiChampionDetailObj'
+              - $ref: '#/components/schemas/NasusChampionDetailObj'
+              - $ref: '#/components/schemas/NautilusChampionDetailObj'
+              - $ref: '#/components/schemas/NeekoChampionDetailObj'
+              - $ref: '#/components/schemas/NidaleeChampionDetailObj'
+              - $ref: '#/components/schemas/NilahChampionDetailObj'
+              - $ref: '#/components/schemas/NocturneChampionDetailObj'
+              - $ref: '#/components/schemas/NunuChampionDetailObj'
+              - $ref: '#/components/schemas/OlafChampionDetailObj'
+              - $ref: '#/components/schemas/OriannaChampionDetailObj'
+              - $ref: '#/components/schemas/OrnnChampionDetailObj'
+              - $ref: '#/components/schemas/PantheonChampionDetailObj'
+              - $ref: '#/components/schemas/PoppyChampionDetailObj'
+              - $ref: '#/components/schemas/PykeChampionDetailObj'
+              - $ref: '#/components/schemas/QiyanaChampionDetailObj'
+              - $ref: '#/components/schemas/QuinnChampionDetailObj'
+              - $ref: '#/components/schemas/RakanChampionDetailObj'
+              - $ref: '#/components/schemas/RammusChampionDetailObj'
+              - $ref: '#/components/schemas/RekSaiChampionDetailObj'
+              - $ref: '#/components/schemas/RellChampionDetailObj'
+              - $ref: '#/components/schemas/RenataChampionDetailObj'
+              - $ref: '#/components/schemas/RenektonChampionDetailObj'
+              - $ref: '#/components/schemas/RengarChampionDetailObj'
+              - $ref: '#/components/schemas/RivenChampionDetailObj'
+              - $ref: '#/components/schemas/RumbleChampionDetailObj'
+              - $ref: '#/components/schemas/RyzeChampionDetailObj'
+              - $ref: '#/components/schemas/SamiraChampionDetailObj'
+              - $ref: '#/components/schemas/SejuaniChampionDetailObj'
+              - $ref: '#/components/schemas/SennaChampionDetailObj'
+              - $ref: '#/components/schemas/SeraphineChampionDetailObj'
+              - $ref: '#/components/schemas/SettChampionDetailObj'
+              - $ref: '#/components/schemas/ShacoChampionDetailObj'
+              - $ref: '#/components/schemas/ShenChampionDetailObj'
+              - $ref: '#/components/schemas/ShyvanaChampionDetailObj'
+              - $ref: '#/components/schemas/SingedChampionDetailObj'
+              - $ref: '#/components/schemas/SionChampionDetailObj'
+              - $ref: '#/components/schemas/SivirChampionDetailObj'
+              - $ref: '#/components/schemas/SkarnerChampionDetailObj'
+              - $ref: '#/components/schemas/SonaChampionDetailObj'
+              - $ref: '#/components/schemas/SorakaChampionDetailObj'
+              - $ref: '#/components/schemas/SwainChampionDetailObj'
+              - $ref: '#/components/schemas/SylasChampionDetailObj'
+              - $ref: '#/components/schemas/SyndraChampionDetailObj'
+              - $ref: '#/components/schemas/TahmKenchChampionDetailObj'
+              - $ref: '#/components/schemas/TaliyahChampionDetailObj'
+              - $ref: '#/components/schemas/TalonChampionDetailObj'
+              - $ref: '#/components/schemas/TaricChampionDetailObj'
+              - $ref: '#/components/schemas/TeemoChampionDetailObj'
+              - $ref: '#/components/schemas/ThreshChampionDetailObj'
+              - $ref: '#/components/schemas/TristanaChampionDetailObj'
+              - $ref: '#/components/schemas/TrundleChampionDetailObj'
+              - $ref: '#/components/schemas/TryndamereChampionDetailObj'
+              - $ref: '#/components/schemas/TwistedFateChampionDetailObj'
+              - $ref: '#/components/schemas/TwitchChampionDetailObj'
+              - $ref: '#/components/schemas/UdyrChampionDetailObj'
+              - $ref: '#/components/schemas/UrgotChampionDetailObj'
+              - $ref: '#/components/schemas/VarusChampionDetailObj'
+              - $ref: '#/components/schemas/VayneChampionDetailObj'
+              - $ref: '#/components/schemas/VeigarChampionDetailObj'
+              - $ref: '#/components/schemas/VelkozChampionDetailObj'
+              - $ref: '#/components/schemas/VexChampionDetailObj'
+              - $ref: '#/components/schemas/ViChampionDetailObj'
+              - $ref: '#/components/schemas/ViegoChampionDetailObj'
+              - $ref: '#/components/schemas/ViktorChampionDetailObj'
+              - $ref: '#/components/schemas/VladimirChampionDetailObj'
+              - $ref: '#/components/schemas/VolibearChampionDetailObj'
+              - $ref: '#/components/schemas/WarwickChampionDetailObj'
+              - $ref: '#/components/schemas/XayahChampionDetailObj'
+              - $ref: '#/components/schemas/XerathChampionDetailObj'
+              - $ref: '#/components/schemas/XinZhaoChampionDetailObj'
+              - $ref: '#/components/schemas/YasuoChampionDetailObj'
+              - $ref: '#/components/schemas/YoneChampionDetailObj'
+              - $ref: '#/components/schemas/YorickChampionDetailObj'
+              - $ref: '#/components/schemas/YuumiChampionDetailObj'
+              - $ref: '#/components/schemas/ZacChampionDetailObj'
+              - $ref: '#/components/schemas/ZedChampionDetailObj'
+              - $ref: '#/components/schemas/ZeriChampionDetailObj'
+              - $ref: '#/components/schemas/ZiggsChampionDetailObj'
+              - $ref: '#/components/schemas/ZileanChampionDetailObj'
+              - $ref: '#/components/schemas/ZoeChampionDetailObj'
+              - $ref: '#/components/schemas/ZyraChampionDetailObj'
+
+    AatroxChampionDetailObj:
+      required:
+        - "Aatrox"
+      properties:
+        Aatrox:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+    
+    AhriChampionDetailObj:
+      required:
+        - "Ahri"
+      properties:
+        Ahri:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+    
+    AkaliChampionDetailObj:
+      required:
+        - "Akali"
+      properties:
+        Akali:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AkshanChampionDetailObj:
+      required:
+        - "Akshan"
+      properties:
+        Akshan:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AlistarChampionDetailObj:
+      required:
+        - "Alistar"
+      properties:
+        Alistar:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AmumuChampionDetailObj:
+      required:
+        - "Amumu"
+      properties:
+        Amumu:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AniviaChampionDetailObj:
+      required:
+        - "Anivia"
+      properties:
+        Anivia:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AnnieChampionDetailObj:
+      required:
+        - "Annie"
+      properties:
+        Annie:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ApheliosChampionDetailObj:
+      required:
+        - "Aphelios"
+      properties:
+        Aphelios:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AsheChampionDetailObj:
+      required:
+        - "Ashe"
+      properties:
+        Ashe:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AurelionSolChampionDetailObj:
+      required:
+        - "AurelionSol"
+      properties:
+        AurelionSol:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    AzirChampionDetailObj:
+      required:
+        - "Azir"
+      properties:
+        Azir:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    BardChampionDetailObj:
+      required:
+        - "Bard"
+      properties:
+        Bard:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    BelvethChampionDetailObj:
+      required:
+        - "Belveth"
+      properties:
+        Belveth:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    BlitzcrankChampionDetailObj:
+      required:
+        - "Blitzcrank"
+      properties:
+        Blitzcrank:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    BrandChampionDetailObj:
+      required:
+        - "Brand"
+      properties:
+        Brand:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    BraumChampionDetailObj:
+      required:
+        - "Braum"
+      properties:
+        Braum:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    BriarChampionDetailObj:
+      required:
+        - "Briar"
+      properties:
+        Briar:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    CaitlynChampionDetailObj:
+      required:
+        - "Caitlyn"
+      properties:
+        Caitlyn:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    CamilleChampionDetailObj:
+      required:
+        - "Camille"
+      properties:
+        Camille:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+      
+
+    CassiopeiaChampionDetailObj:
+      required:
+        - "Cassiopeia"
+      properties:
+        Cassiopeia:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ChogathChampionDetailObj:
+      required:
+        - "Chogath"
+      properties:
+        Chogath:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    CorkiChampionDetailObj:
+      required:
+        - "Corki"
+      properties:
+        Corki:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    DariusChampionDetailObj:
+      required:
+        - "Darius"
+      properties:
+        Darius:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+      
+    DianaChampionDetailObj:
+      required:
+        - "Diana"
+      properties:
+        Diana:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    DravenChampionDetailObj:
+      required:
+        - "Draven"
+      properties:
+        Draven:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    DrMundoChampionDetailObj:
+      required:
+        - "DrMundo"
+      properties:
+        DrMundo:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    EkkoChampionDetailObj:
+      required:
+        - "Ekko"
+      properties:
+        Ekko:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    EliseChampionDetailObj:
+      required:
+        - "Elise"
+      properties:
+        Elise:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    EvelynnChampionDetailObj:
+      required:
+        - "Evelynn"
+      properties:
+        Evelynn:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    EzrealChampionDetailObj:
+      required:
+        - "Ezreal"
+      properties:
+        Ezreal:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    FiddlesticksChampionDetailObj:
+      required:
+        - "Fiddlesticks"
+      properties:
+        Fiddlesticks:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    FioraChampionDetailObj:
+      required:
+        - "Fiora"
+      properties:
+        Fiora:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    FizzChampionDetailObj:
+      required:
+        - "Fizz"
+      properties:
+        Fizz:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    GalioChampionDetailObj:
+      required:
+        - "Galio"
+      properties:
+        Galio:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    GangplankChampionDetailObj:
+      required:
+        - "Gangplank"
+      properties:
+        Gangplank:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    GarenChampionDetailObj:
+      required:
+        - "Garen"
+      properties:
+        Garen:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+      
+
+    GnarChampionDetailObj:
+      required:
+        - "Gnar"
+      properties:
+        Gnar:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    GragasChampionDetailObj:
+      required:
+        - "Gragas"
+      properties:
+        Gragas:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    GravesChampionDetailObj:
+      required:
+        - "Graves"
+      properties:
+        Graves:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    GwenChampionDetailObj:
+      required:
+        - "Gwen"
+      properties:
+        Gwen:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    HecarimChampionDetailObj:
+      required:
+        - "Hecarim"
+      properties:
+        Hecarim:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    HeimerdingerChampionDetailObj:
+      required:
+        - "Heimerdinger"
+      properties:
+        Heimerdinger:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    IllaoiChampionDetailObj:
+      required:
+        - "Illaoi"
+      properties:
+        Illaoi:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    IreliaChampionDetailObj:
+      required:
+        - "Irelia"
+      properties:
+        Irelia:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    IvernChampionDetailObj:
+      required:
+        - "Ivern"
+      properties:
+        Ivern:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    JannaChampionDetailObj:
+      required:
+        - "Janna"
+      properties:
+        Janna:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    JarvanIVChampionDetailObj:
+      required:
+        - "JarvanIV"
+      properties:
+        JarvanIV:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    JaxChampionDetailObj:
+      required:
+        - "Jax"
+      properties:
+        Jax:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    JayceChampionDetailObj:
+      required:
+        - "Jayce"
+      properties:
+        Jayce:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    JhinChampionDetailObj:
+      required:
+        - "Jhin"
+      properties:
+        Jhin:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    JinxChampionDetailObj:
+      required:
+        - "Jinx"
+      properties:
+        Jinx:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KaisaChampionDetailObj:
+      required:
+        - "Kaisa"
+      properties:
+        Kaisa:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KalistaChampionDetailObj:
+      required:
+        - "Kalista"
+      properties:
+        Kalista:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KarmaChampionDetailObj:
+      required:
+        - "Karma"
+      properties:
+        Karma:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KarthusChampionDetailObj:
+      required:
+        - "Karthus"
+      properties:
+        Karthus:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KassadinChampionDetailObj:
+      required:
+        - "Kassadin"
+      properties:
+        Kassadin:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KatarinaChampionDetailObj:
+      required:
+        - "Katarina"
+      properties:
+        Katarina:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KayleChampionDetailObj:
+      required:
+        - "Kayle"
+      properties:
+        Kayle:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KaynChampionDetailObj:
+      required:
+        - "Kayn"
+      properties:
+        Kayn:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KennenChampionDetailObj:
+      required:
+        - "Kennen"
+      properties:
+        Kennen:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KhazixChampionDetailObj:
+      required:
+        - "Khazix"
+      properties:
+        Khazix:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KindredChampionDetailObj:
+      required:
+        - "Kindred"
+      properties:
+        Kindred:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KledChampionDetailObj:
+      required:
+        - "Kled"
+      properties:
+        Kled:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KogMawChampionDetailObj:
+      required:
+        - "KogMaw"
+      properties:
+        KogMaw:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    KSanteChampionDetailObj:
+      required:
+        - "KSante"
+      properties:
+        KSante:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LeblancChampionDetailObj:
+      required:
+        - "Leblanc"
+      properties:
+        Leblanc:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LeeSinChampionDetailObj:
+      required:
+        - "LeeSin"
+      properties:
+        LeeSin:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LeonaChampionDetailObj:
+      required:
+        - "Leona"
+      properties:
+        Leona:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LilliaChampionDetailObj:
+      required:
+        - "Lillia"
+      properties:
+        Lillia:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LissandraChampionDetailObj:
+      required:
+        - "Lissandra"
+      properties:
+        Lissandra:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LucianChampionDetailObj:
+      required:
+        - "Lucian"
+      properties:
+        Lucian:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LuluChampionDetailObj:
+      required:
+        - "Lulu"
+      properties:
+        Lulu:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    LuxChampionDetailObj:
+      required:
+        - "Lux"
+      properties:
+        Lux:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MalphiteChampionDetailObj:
+      required:
+        - "Malphite"
+      properties:
+        Malphite:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MalzaharChampionDetailObj:
+      required:
+        - "Malzahar"
+      properties:
+        Malzahar:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MaokaiChampionDetailObj:
+      required:
+        - "Maokai"
+      properties:
+        Maokai:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MasterYiChampionDetailObj:
+      required:
+        - "MasterYi"
+      properties:
+        MasterYi:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MilioChampionDetailObj:
+      required:
+        - "Milio"
+      properties:
+        Milio:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MissFortuneChampionDetailObj:
+      required:
+        - "MissFortune"
+      properties:
+        MissFortune:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MonkeyKingChampionDetailObj:
+      required:
+        - "MonkeyKing"
+      properties:
+        MonkeyKing:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MordekaiserChampionDetailObj:
+      required:
+        - "Mordekaiser"
+      properties:
+        Mordekaiser:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    MorganaChampionDetailObj:
+      required:
+        - "Morgana"
+      properties:
+        Morgana:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NaafiriChampionDetailObj:
+      required:
+        - "Naafiri"
+      properties:
+        Naafiri:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NamiChampionDetailObj:
+      required:
+        - "Nami"
+      properties:
+        Nami:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NasusChampionDetailObj:
+      required:
+        - "Nasus"
+      properties:
+        Nasus:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NautilusChampionDetailObj:
+      required:
+        - "Nautilus"
+      properties:
+        Nautilus:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NeekoChampionDetailObj:
+      required:
+        - "Neeko"
+      properties:
+        Neeko:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NidaleeChampionDetailObj:
+      required:
+        - "Nidalee"
+      properties:
+        Nidalee:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NilahChampionDetailObj:
+      required:
+        - "Nilah"
+      properties:
+        Nilah:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NocturneChampionDetailObj:
+      required:
+        - "Nocturne"
+      properties:
+        Nocturne:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    NunuChampionDetailObj:
+      required:
+        - "Nunu"
+      properties:
+        Nunu:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    OlafChampionDetailObj:
+      required:
+        - "Olaf"
+      properties:
+        Olaf:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    OriannaChampionDetailObj:
+      required:
+        - "Orianna"
+      properties:
+        Orianna:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    OrnnChampionDetailObj:
+      required:
+        - "Ornn"
+      properties:
+        Ornn:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    PantheonChampionDetailObj:
+      required:
+        - "Pantheon"
+      properties:
+        Pantheon:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    PoppyChampionDetailObj:
+      required:
+        - "Poppy"
+      properties:
+        Poppy:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    PykeChampionDetailObj:
+      required:
+        - "Pyke"
+      properties:
+        Pyke:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    QiyanaChampionDetailObj:
+      required:
+        - "Qiyana"
+      properties:
+        Qiyana:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    QuinnChampionDetailObj:
+      required:
+        - "Quinn"
+      properties:
+        Quinn:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RakanChampionDetailObj:
+      required:
+        - "Rakan"
+      properties:
+        Rakan:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RammusChampionDetailObj:
+      required:
+        - "Rammus"
+      properties:
+        Rammus:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RekSaiChampionDetailObj:
+      required:
+        - "RekSai"
+      properties:
+        RekSai:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RellChampionDetailObj:
+      required:
+        - "Rell"
+      properties:
+        Rell:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RenataChampionDetailObj:
+      required:
+        - "Renata"
+      properties:
+        Renata:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RenektonChampionDetailObj:
+      required:
+        - "Renekton"
+      properties:
+        Renekton:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RengarChampionDetailObj:
+      required:
+        - "Rengar"
+      properties:
+        Rengar:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RivenChampionDetailObj:
+      required:
+        - "Riven"
+      properties:
+        Riven:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RumbleChampionDetailObj:
+      required:
+        - "Rumble"
+      properties:
+        Rumble:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    RyzeChampionDetailObj:
+      required:
+        - "Ryze"
+      properties:
+        Ryze:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SamiraChampionDetailObj:
+      required:
+        - "Samira"
+      properties:
+        Samira:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SejuaniChampionDetailObj:
+      required:
+        - "Sejuani"
+      properties:
+        Sejuani:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SennaChampionDetailObj:
+      required:
+        - "Senna"
+      properties:
+        Senna:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SeraphineChampionDetailObj:
+      required:
+        - "Seraphine"
+      properties:
+        Seraphine:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SettChampionDetailObj:
+      required:
+        - "Sett"
+      properties:
+        Sett:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ShacoChampionDetailObj:
+      required:
+        - "Shaco"
+      properties:
+        Shaco:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ShenChampionDetailObj:
+      required:
+        - "Shen"
+      properties:
+        Shen:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ShyvanaChampionDetailObj:
+      required:
+        - "Shyvana"
+      properties:
+        Shyvana:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SingedChampionDetailObj:
+      required:
+        - "Singed"
+      properties:
+        Singed:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SionChampionDetailObj:
+      required:
+        - "Sion"
+      properties:
+        Sion:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SivirChampionDetailObj:
+      required:
+        - "Sivir"
+      properties:
+        Sivir:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SkarnerChampionDetailObj:
+      required:
+        - "Skarner"
+      properties:
+        Skarner:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SonaChampionDetailObj:
+      required:
+        - "Sona"
+      properties:
+        Sona:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SorakaChampionDetailObj:
+      required:
+        - "Soraka"
+      properties:
+        Soraka:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SwainChampionDetailObj:
+      required:
+        - "Swain"
+      properties:
+        Swain:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SylasChampionDetailObj:
+      required:
+        - "Sylas"
+      properties:
+        Sylas:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    SyndraChampionDetailObj:
+      required:
+        - "Syndra"
+      properties:
+        Syndra:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TahmKenchChampionDetailObj:
+      required:
+        - "TahmKench"
+      properties:
+        TahmKench:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TaliyahChampionDetailObj:
+      required:
+        - "Taliyah"
+      properties:
+        Taliyah:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TalonChampionDetailObj:
+      required:
+        - "Talon"
+      properties:
+        Talon:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TaricChampionDetailObj:
+      required:
+        - "Taric"
+      properties:
+        Taric:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TeemoChampionDetailObj:
+      required:
+        - "Teemo"
+      properties:
+        Teemo:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ThreshChampionDetailObj:
+      required:
+        - "Thresh"
+      properties:
+        Thresh:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TristanaChampionDetailObj:
+      required:
+        - "Tristana"
+      properties:
+        Tristana:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TrundleChampionDetailObj:
+      required:
+        - "Trundle"
+      properties:
+        Trundle:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TryndamereChampionDetailObj:
+      required:
+        - "Tryndamere"
+      properties:
+        Tryndamere:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TwistedFateChampionDetailObj:
+      required:
+        - "TwistedFate"
+      properties:
+        TwistedFate:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    TwitchChampionDetailObj:
+      required:
+        - "Twitch"
+      properties:
+        Twitch:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    UdyrChampionDetailObj:
+      required:
+        - "Udyr"
+      properties:
+        Udyr:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    UrgotChampionDetailObj:
+      required:
+        - "Urgot"
+      properties:
+        Urgot:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    VarusChampionDetailObj:
+      required:
+        - "Varus"
+      properties:
+        Varus:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    VayneChampionDetailObj:
+      required:
+        - "Vayne"
+      properties:
+        Vayne:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    VeigarChampionDetailObj:
+      required:
+        - "Veigar"
+      properties:
+        Veigar:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    VelkozChampionDetailObj:
+      required:
+        - "Velkoz"
+      properties:
+        Velkoz:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    VexChampionDetailObj:
+      required:
+        - "Vex"
+      properties:
+        Vex:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ViChampionDetailObj:
+      required:
+        - "Vi"
+      properties:
+        Vi:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ViegoChampionDetailObj:
+      required:
+        - "Viego"
+      properties:
+        Viego:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ViktorChampionDetailObj:
+      required:
+        - "Viktor"
+      properties:
+        Viktor:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    VladimirChampionDetailObj:
+      required:
+        - "Vladimir"
+      properties:
+        Vladimir:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    VolibearChampionDetailObj:
+      required:
+        - "Volibear"
+      properties:
+        Volibear:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    WarwickChampionDetailObj:
+      required:
+        - "Warwick"
+      properties:
+        Warwick:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    XayahChampionDetailObj:
+      required:
+        - "Xayah"
+      properties:
+        Xayah:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    XerathChampionDetailObj:
+      required:
+        - "Xerath"
+      properties:
+        Xerath:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    XinZhaoChampionDetailObj:
+      required:
+        - "XinZhao"
+      properties:
+        XinZhao:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    YasuoChampionDetailObj:
+      required:
+        - "Yasuo"
+      properties:
+        Yasuo:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    YoneChampionDetailObj:
+      required:
+        - "Yone"
+      properties:
+        Yone:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    YorickChampionDetailObj:
+      required:
+        - "Yorick"
+      properties:
+        Yorick:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    YuumiChampionDetailObj:
+      required:
+        - "Yuumi"
+      properties:
+        Yuumi:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ZacChampionDetailObj:
+      required:
+        - "Zac"
+      properties:
+        Zac:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ZedChampionDetailObj:
+      required:
+        - "Zed"
+      properties:
+        Zed:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ZeriChampionDetailObj:
+      required:
+        - "Zeri"
+      properties:
+        Zeri:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ZiggsChampionDetailObj:
+      required:
+        - "Ziggs"
+      properties:
+        Ziggs:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ZileanChampionDetailObj:
+      required:
+        - "Zilean"
+      properties:
+        Zilean:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ZoeChampionDetailObj:
+      required:
+        - "Zoe"
+      properties:
+        Zoe:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ZyraChampionDetailObj:
+      required:
+        - "Zyra"
+      properties:
+        Zyra:
+          $ref: '#/components/schemas/ChampionDetailObj'
+      type: "object"
+
+    ChampionDetailObj:
+      required:
+            - "id"
+            - "key"
+            - "name"
+            - "title"
+            - "image"
+            - "skins"
+            - "lore"
+            - "blurb"
+            - "allytips"
+            - "enemytips"
+            - "tags"
+            - "partype"
+            - "info"
+            - "stats"
+            - "spells"
+            - "passive"
+      properties:
+        id:
+          type: "string"
+        key:
+          type: "string"
+        name:
+          type: "string"
+        title:
+          type: "string"
+        image:
+            $ref: '#/components/schemas/ImageObj'
+        skins:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+              num:
+                type: "number"
+              name:
+                type: "string"
+              chromas:
+                type: "boolean"
+        lore:
+          type: "string"
+        blurb:
+          type: "string"
+        allytips:
+          type: "array"
+          items:
+            type: "string"
+        enemytips:
+          type: "array"
+          items:
+            type: "string"
+        tags:
+          type: "array"
+          items:
+            type: "string"
+        partype:
+          type: "string"
+        info:
+            $ref: '#/components/schemas/InfoObj'
+        stats:
+            $ref: '#/components/schemas/StatsObj'
+        spells:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+              name:
+                type: "string"
+              description:
+                type: "string"
+              tooltip:
+                type: "string"
+              leveltip:
+                $ref: '#/components/schemas/LevelTipObj'
+              maxrank:
+                type: "number"
+              cooldown:
+                type: "array"
+                items:
+                  type: "number"
+              cooldownBurn:
+                type: "string"
+              cost:
+                type: "array"
+                items:
+                  type: "number"
+              costBurn:
+                type: "string"
+              costType:
+                type: "string"
+              maxammo:
+                type: "string"
+              range:
+                type: "array"
+                items:
+                  type: "number"
+              rangeBurn:
+                type: "string"
+              image:
+                $ref: '#/components/schemas/ImageObj'
+              resource:
+                type: "string"
+        passive:
+          $ref: '#/components/schemas/PassiveObj'
+
+      type: "object"
+    
+    LevelTipObj:
+        required:
+          - "label"
+          - "effect"
+        properties:
+          label:
+            type: "array"
+            items:
+              type: "string"
+          effect:
+            type: "array"
+            items:
+              type: "string"
+        type: "object"
+        
+    PassiveObj:
+        required:
+            - "name"
+            - "description"
+            - "image"
+        properties:
+            name:
+                type: "string"
+            description:
+                type: "string"
+            image:
+                $ref: '#/components/schemas/ImageObj'
+        type: "object"
+        
+    RuneObj:
+        required:
+            - "id"
+            - "key"
+            - "icon"
+            - "name"
+            - "slots"
+        properties:
+            id:
+                type: "number"
+            key:
+                type: "string"
+            icon:
+                type: "string"
+            name:
+                type: "string"
+            slots:
+                type: "array"
+                items:
+                    type: "object"
+                    properties:
+                        runes:
+                            type: "array"
+                            items:
+                                type: "object"
+                                properties:
+                                    id:
+                                        type: "number"
+                                    key:
+                                        type: "string"
+                                    icon:
+                                        type: "string"
+                                    name:
+                                        type: "string"
+                                    shortDesc:
+                                        type: "string"
+                                    longDesc:
+                                        type: "string"
+        type: "object"
+
+
+    SummonerAllData:
+          required:
+            - "type"
+            - "version"
+            - "data"
+          properties:
+            type:
+              type: "string"
+            version:
+              type: "string"
+            data:
+              required:
+                    - "SummonerBarrier"
+                    - "SummonerBoost"
+                    - "SummonerCherryFlash"
+                    - "SummonerCherryHold"
+                    - "SummonerDot"
+                    - "SummonerExhaust"
+                    - "SummonerFlash"
+                    - "SummonerHaste"
+                    - "SummonerHeal"
+                    - "SummonerMana"
+                    - "SummonerPoroRecall"
+                    - "SummonerPoroThrow"
+                    - "SummonerSmite"
+                    - "SummonerSnowURFSnowball_Mark"
+                    - "SummonerSnowball"
+                    - "SummonerTeleport"
+                    - "Summoner_UltBookPlaceholder"
+                    - "Summoner_UltBookSmitePlaceholder"
+              properties:
+                    SummonerBarrier:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerBoost:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerCherryFlash:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerCherryHold:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerDot:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerExhaust:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerFlash:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerHaste:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerHeal:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerMana:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerPoroRecall:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerPoroThrow:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerSmite:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerSnowURFSnowball_Mark:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerSnowball:
+                         $ref: '#/components/schemas/SummonerObj'
+                    SummonerTeleport:
+                         $ref: '#/components/schemas/SummonerObj'
+                    Summoner_UltBookPlaceholder:
+                         $ref: '#/components/schemas/SummonerObj'
+                    Summoner_UltBookSmitePlaceholder:
+                         $ref: '#/components/schemas/SummonerObj'
+              type: "object"
+          type: "object"
+
+
+    SummonerObj:
+          required:
+                - "id"
+                - "name"
+                - "description"
+                - "tooltip"
+                - "maxrank"
+                - "cooldown"
+                - "cooldownBurn"
+                - "cost"
+                - "costBurn"
+                - "key"
+                - "summonerLevel"
+                - "modes"
+                - "costType"
+                - "maxammo"
+                - "range"
+                - "rangeBurn"
+                - "image"
+                - "resource"
+          properties:
+                id:
+                  type: "string"
+                name:
+                  type: "string"
+                description:
+                  type: "string"
+                tooltip:
+                  type: "string"
+                maxrank:
+                  type: "number"
+                cooldown:
+                  type: "array"
+                  items:
+                    type: "number"
+                cooldownBurn:
+                  type: "string"
+                cost:
+                  type: "array"
+                  items:
+                    type: "number"
+                costBurn:
+                  type: "string"
+                key:
+                  type: "string"
+                summonerLevel:
+                  type: "number"
+                modes:
+                  type: "array"
+                  items:
+                    type: "string"
+                costType:
+                  type: "string"
+                maxammo:
+                  type: "string"
+                range:
+                  type: "array"
+                  items:
+                    type: "number"
+                rangeBurn:
+                  type: "string"
+                image:
+                    $ref: '#/components/schemas/ImageObj'
+                resource:
+                  type: "string"
+          type: "object"
