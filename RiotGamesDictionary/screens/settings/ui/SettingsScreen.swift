@@ -13,9 +13,11 @@ struct SettingsScreen: View {
         Form{
             Section {
                 Text("Saved account: \(store.titleName)")
-            
+                    .foregroundColor(.white)
+                
                 TextField("Name",text: $store.searchSummonerName.sending(\.setSearchSummonerName))
                     .tint(.white)
+                    .foregroundColor(.white)
                 
                 Button(action: {
                     store.send(.actionRequestSummonerName)
@@ -45,7 +47,7 @@ struct SettingsScreen: View {
                                 .foregroundColor(.white)
                     }
                     
-                }
+                }.foregroundColor(.white)
     
             } header: {
                 Text("localization data")
@@ -63,7 +65,8 @@ struct SettingsScreen: View {
                              .font(.system(size: 13))
                              .foregroundColor(.white)
                      }
-                 }
+                 }.foregroundColor(.white)
+                
                 
                 
             } header: {
@@ -94,6 +97,7 @@ struct SettingsScreen: View {
         }
         .navigationTitle("Settings")
         .alert($store.scope(state: \.alert, action: \.alert))
+        .tint(ColorResources.color4)
     }
 }
 

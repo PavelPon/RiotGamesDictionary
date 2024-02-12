@@ -17,8 +17,7 @@ extension String {
 
 final class Obfuscator: Serviceable {
     
-    // f88288f4bca14599a2334cadfb3d6f4b
-    let newsAPIKey: [UInt8] = [4, 89, 90, 83, 90, 89, 4, 85, 0, 2, 3, 80, 86, 84, 91, 88, 3, 83, 81, 82, 86, 2, 3, 5, 4, 3, 81, 5, 84, 7, 86, 3]
+    let riotAPIKey: [UInt8] = [34, 63, 49, 40, 57, 85, 20, 78, 17, 79, 69, 76, 73, 65, 93, 76, 67, 75, 70, 85, 68, 73, 18, 72, 93, 25, 69, 73, 71, 85, 68, 79, 64, 79, 70, 77, 67, 78, 18, 78, 73, 26]
      
     init() {}
     
@@ -26,7 +25,7 @@ final class Obfuscator: Serviceable {
     private func salt() -> String {
         typealias C = Character
         let a1: C, a2: C
-        (a1, a2) = ("a", "b")
+        (a1, a2) = ("x", "p")
         return String("00".characters().enumerated().map { i, e in
             if i == 0 { return a2 }
             else { return a1 }

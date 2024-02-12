@@ -19,7 +19,7 @@ public class ColorResources {
     static let color1 = Color(cgColor: rgbColorInint(red: 9, green: 20, blue: 40, alpha: 1.0))
     static let color2 = Color(cgColor: rgbColorInint(red: 10, green: 50, blue: 60, alpha: 1.0))
     static let color3 = Color(cgColor: rgbColorInint(red: 0, green: 90, blue: 130, alpha: 1.0))
-
+    static let color4 = Color(cgColor: rgbColorInint(red: 200, green: 155, blue: 60, alpha: 1.0))
 }
 
 func rgbColorInint(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> CGColor {

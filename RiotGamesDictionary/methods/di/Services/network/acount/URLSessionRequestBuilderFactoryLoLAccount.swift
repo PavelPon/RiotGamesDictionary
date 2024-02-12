@@ -1,32 +1,32 @@
 //
-//  NewsApiRequestBuilder.swift
-//  AppSUI
+//  URLSessionRequestBuilderFactoryLoLAccount.swift
+//  RiotGamesDictionary
 //
-//  Created by Exey Panteleev on 28.08.2023.
+//  Created by Павел Пономарёв on 12.02.2024.
 //
 
 import Foundation
-import LoLDictionaryNetwork
+import AccountRiotApiNetwork
 import ComposableArchitecture
 
-final class URLSessionRequestBuilderFactoryLoLDictionary: RequestBuilderFactory {
+final class URLSessionRequestBuilderFactoryLoLAccount: RequestBuilderFactory {
     
     func getNonDecodableBuilder<T>() -> RequestBuilder<T>.Type {
         URLSessionRequestBuilder<T>.self
     }
     
     func getBuilder<T>() -> RequestBuilder<T>.Type where T : Decodable {
-        LoLDictionaryRequestBuilder<T>.self
+        LoLAccountRequestBuilder<T>.self
     }
     
 }
 
-final class LoLDictionaryRequestBuilder<T:Decodable>: URLSessionDecodableRequestBuilder<T> {
+final class LoLAccountRequestBuilder<T:Decodable>: URLSessionDecodableRequestBuilder<T> {
     
     override func createURLSession() -> URLSessionProtocol {
             let configuration = URLSessionConfiguration.default
             configuration.httpAdditionalHeaders = buildHeaders()
-            let sessionDelegate: SSLPinnedSessionDelegate = .init()
+            let sessionDelegate: SSLPinnedLoLAccountSessionDelegate = .init()
             sessionDelegate.credential = OpenAPIClientAPI.credential
             sessionDelegate.taskDidReceiveChallenge = taskDidReceiveChallenge
             return URLSession(configuration: configuration,
@@ -61,7 +61,7 @@ final class LoLDictionaryRequestBuilder<T:Decodable>: URLSessionDecodableRequest
     
 }
 
-final class SSLPinnedSessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDelegate {
+final class SSLPinnedLoLAccountSessionDelegate: NSObject, URLSessionDelegate, URLSessionDataDelegate {
  
     var credential: URLCredential?
 
@@ -86,7 +86,7 @@ final class SSLPinnedSessionDelegate: NSObject, URLSessionDelegate, URLSessionDa
             let isServerTrusted = SecTrustEvaluateWithError(serverTrust, nil)
             //Local and Remote certificate Data
             let remoteCertificateData:NSData = SecCertificateCopyData(certificate)
-            let pathToCertificate = Bundle.main.path(forResource: "ddragon_leagueoflegends_com", ofType: "cer")
+            let pathToCertificate = Bundle.main.path(forResource: "api_riotgames_com", ofType: "cer")
             let localCertificateData:NSData = NSData(contentsOfFile: pathToCertificate!)!
             
             //Compare certificates

@@ -19,7 +19,7 @@ extension DependencyValues {
 }
 extension LoLAcountNetworkService:DependencyKey{
     static var liveValue: LoLAcountNetworkService  = {
-        //    OpenAPIClientAPI.requestBuilderFactory = URLSessionRequestBuilderFactoryLoLDictionary()
+            OpenAPIClientAPI.requestBuilderFactory = URLSessionRequestBuilderFactoryLoLAccount()
         return Self(
             getUserData: { summonerName, apiKey in
                 guard let data = try? await DataSummonerNameAPI.getDataSummonerName(summonerName: summonerName, apiKey: apiKey) else{

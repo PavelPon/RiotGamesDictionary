@@ -55,65 +55,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0F53422F-A05B-4A16-80A9-B9BDE7F48DAC"
-            shouldBeEnabled = "Yes"
+            uuid = "1897F946-53C0-47F9-8210-CC3F5318864A"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
+            filePath = "RiotGamesDictionary/methods/di/Services/resoures/Obfuscator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "init()"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "bytesByObfuscatingString(string:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D5C89ABD-4F8B-4DA3-94B9-AD2BD13A2F1B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "certificate(filename:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D5C89ABD-4F8B-4DA3-94B9-AD2BD13A2F1B - 55ab338cd4ab9f92"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RiotGamesDictionary.Certificates.certificate(filename: Swift.String) throws -&gt; Swift.Optional&lt;__C.SecCertificateRef&gt;"
-                  moduleName = "RiotGamesDictionary"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pavelponomarev/Desktop/Projects/RiotProject/RiotGamesDictionary/RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "516">
-               </Location>
-               <Location
-                  uuid = "D5C89ABD-4F8B-4DA3-94B9-AD2BD13A2F1B - 55ab338cd4ab9f92"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RiotGamesDictionary.Certificates.certificate(filename: Swift.String) throws -&gt; Swift.Optional&lt;__C.SecCertificateRef&gt;"
-                  moduleName = "RiotGamesDictionary"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pavelponomarev/Desktop/Projects/RiotProject/RiotGamesDictionary/RiotGamesDictionary/methods/di/Services/resoures/Certificates.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "892">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

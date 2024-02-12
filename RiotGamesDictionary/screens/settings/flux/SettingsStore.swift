@@ -14,6 +14,7 @@ import AccountRiotApiNetwork
 struct SettingsStore{
     @Dependency(\.keychainService) var keychainService
     @Dependency(\.acountNetwork) var acountNetwork
+    @Dependency(\.obfuscatorService) var obfuscatorService
     @ObservableState
     struct State:Equatable{
         var localization = ""
@@ -82,7 +83,7 @@ struct SettingsStore{
             case .actionRequestSummonerName:
                 state.isLoading = true
                 return .run {[state] send in
-                  let data  = await acountNetwork.getUserData(state.searchSummonerName,"RGAPI-8878c150-a7ae-4610-93a2-230f49bc8d73")
+                    let data  = await acountNetwork.getUserData(state.searchSummonerName,obfuscatorService.service.reveal(key: obfuscatorService.service.riotAPIKey))
                     
                     if data.1 != nil{
                         await send(.failureRequestSummonerName(data.1?.localizedDescription ?? "error"))

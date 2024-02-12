@@ -12,20 +12,17 @@ import AnyCodable
 
 public struct ModelMatchInfoInfoTeamsInner: Codable, JSONEncodable, Hashable {
 
-    public var bans: [BanDto]?
     public var objectives: ModelMatchInfoInfoTeamsInnerObjectives?
     public var teamId: Double?
     public var win: Bool?
 
-    public init(bans: [BanDto]? = nil, objectives: ModelMatchInfoInfoTeamsInnerObjectives? = nil, teamId: Double? = nil, win: Bool? = nil) {
-        self.bans = bans
+    public init(objectives: ModelMatchInfoInfoTeamsInnerObjectives? = nil, teamId: Double? = nil, win: Bool? = nil) {
         self.objectives = objectives
         self.teamId = teamId
         self.win = win
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case bans
         case objectives
         case teamId
         case win
@@ -35,30 +32,9 @@ public struct ModelMatchInfoInfoTeamsInner: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(bans, forKey: .bans)
         try container.encodeIfPresent(objectives, forKey: .objectives)
         try container.encodeIfPresent(teamId, forKey: .teamId)
         try container.encodeIfPresent(win, forKey: .win)
     }
 }
 
-
-// нужно доделать code gen
-public struct BanDto : Codable, JSONEncodable, Hashable {
-    public var championId: Int?
-    public var pickTurn: Int?
-    
-    public enum CodingKeys: String, CodingKey, CaseIterable {
-        case championId
-        case pickTurn
-    }
-    
-    // Encodable protocol methods
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(championId, forKey: .championId)
-        try container.encodeIfPresent(pickTurn, forKey: .pickTurn)
-    }
-    
-}

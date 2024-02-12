@@ -974,10 +974,6 @@ components:
                   items:
                     type: "object"
                     properties:
-                      bans:
-                        type: "array"
-                        items:
-                          type: "undefined"
                       objectives:
                         required:
                           - "baron"

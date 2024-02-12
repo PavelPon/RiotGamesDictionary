@@ -12,10 +12,11 @@ import LoLDictionaryNetwork
 @main
 struct RiotGamesDictionaryApp: App {
     @Dependency(\.keychainService) var keychainService
+    @Dependency(\.obfuscatorService) var obfuscatorService
     
     init(){
 
-        
+      //  obfuscatorService.service.bytesByObfuscatingString(string: "")
 
         if keychainService.service.get(key: StringResources.keyVersionDictionary) == nil {
             keychainService.service.set(key: StringResources.keyVersionDictionary, value: "13.23.1")
