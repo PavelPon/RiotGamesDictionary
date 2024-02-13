@@ -16,7 +16,7 @@ struct RiotGamesDictionaryApp: App {
     
     init(){
 
-      //  obfuscatorService.service.bytesByObfuscatingString(string: "")
+        obfuscatorService.service.bytesByObfuscatingString(string: "RGAPI-5086d959-e2ec-4af8-8738-d9444ca0ee60")
 
         if keychainService.service.get(key: StringResources.keyVersionDictionary) == nil {
             keychainService.service.set(key: StringResources.keyVersionDictionary, value: "13.23.1")

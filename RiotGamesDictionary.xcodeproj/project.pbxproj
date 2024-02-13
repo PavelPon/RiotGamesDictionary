@@ -43,7 +43,11 @@
 		966B24062B76451F00C0CAC4 /* RuneDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24052B76451F00C0CAC4 /* RuneDetailScreen.swift */; };
 		966B24082B764D0700C0CAC4 /* SummonerDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24072B764D0700C0CAC4 /* SummonerDetailStore.swift */; };
 		966B240A2B764DE800C0CAC4 /* SummonerDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24092B764DE800C0CAC4 /* SummonerDetailScreen.swift */; };
+		96A00C9C2B7B58CF00A3553F /* GamesHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A00C9B2B7B58CF00A3553F /* GamesHomeScreen.swift */; };
+		96A00C9E2B7B594500A3553F /* GamesHomeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A00C9D2B7B594500A3553F /* GamesHomeStore.swift */; };
 		96CDF7472B74B8EF00482F2F /* ChampionDetailStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CDF7462B74B8EF00482F2F /* ChampionDetailStruct.swift */; };
+		96D74CD92B7B9696004A924E /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 96D74CD82B7B9696004A924E /* data.json */; };
+		96D74CDC2B7B9740004A924E /* ExBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D74CDB2B7B9740004A924E /* ExBundle.swift */; };
 		96D8C5022B70C1E200369E16 /* AppResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8C5012B70C1E200369E16 /* AppResources.swift */; };
 		96D8FC0D2B7A3270005BE36F /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FC0C2B7A3270005BE36F /* SettingsScreen.swift */; };
 		96D8FC112B7A490B005BE36F /* LoLAcountNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FC102B7A490B005BE36F /* LoLAcountNetworkService.swift */; };
@@ -87,7 +91,11 @@
 		966B24052B76451F00C0CAC4 /* RuneDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuneDetailScreen.swift; path = RiotGamesDictionary/screens/runes/ui/RuneDetailScreen.swift; sourceTree = SOURCE_ROOT; };
 		966B24072B764D0700C0CAC4 /* SummonerDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummonerDetailStore.swift; path = RiotGamesDictionary/screens/summoners/flux/SummonerDetailStore.swift; sourceTree = SOURCE_ROOT; };
 		966B24092B764DE800C0CAC4 /* SummonerDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummonerDetailScreen.swift; path = RiotGamesDictionary/screens/summoners/ui/SummonerDetailScreen.swift; sourceTree = SOURCE_ROOT; };
+		96A00C9B2B7B58CF00A3553F /* GamesHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesHomeScreen.swift; sourceTree = "<group>"; };
+		96A00C9D2B7B594500A3553F /* GamesHomeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesHomeStore.swift; sourceTree = "<group>"; };
 		96CDF7462B74B8EF00482F2F /* ChampionDetailStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionDetailStruct.swift; sourceTree = "<group>"; };
+		96D74CD82B7B9696004A924E /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		96D74CDB2B7B9740004A924E /* ExBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBundle.swift; sourceTree = "<group>"; };
 		96D8C5012B70C1E200369E16 /* AppResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResources.swift; sourceTree = "<group>"; };
 		96D8FC0C2B7A3270005BE36F /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		96D8FC102B7A490B005BE36F /* LoLAcountNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoLAcountNetworkService.swift; sourceTree = "<group>"; };
@@ -112,6 +120,7 @@
 		7102F3CE2B2EF9A8003F22A8 /* methods */ = {
 			isa = PBXGroup;
 			children = (
+				96D74CDA2B7B9721004A924E /* extension */,
 				7102F3CF2B2EF9B9003F22A8 /* di */,
 			);
 			path = methods;
@@ -128,6 +137,7 @@
 		7102F3D02B2EF9D3003F22A8 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				96A00C982B7B585800A3553F /* gamesList */,
 				71E510C22B7A773E00188C71 /* summoners */,
 				71E510C12B7A773100188C71 /* runes */,
 				961F09D52B7A22F600DF5E78 /* settings */,
@@ -424,6 +434,31 @@
 			path = struct;
 			sourceTree = "<group>";
 		};
+		96A00C982B7B585800A3553F /* gamesList */ = {
+			isa = PBXGroup;
+			children = (
+				96A00C9A2B7B588700A3553F /* flux */,
+				96A00C992B7B587F00A3553F /* ui */,
+			);
+			path = gamesList;
+			sourceTree = "<group>";
+		};
+		96A00C992B7B587F00A3553F /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				96A00C9B2B7B58CF00A3553F /* GamesHomeScreen.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		96A00C9A2B7B588700A3553F /* flux */ = {
+			isa = PBXGroup;
+			children = (
+				96A00C9D2B7B594500A3553F /* GamesHomeStore.swift */,
+			);
+			path = flux;
+			sourceTree = "<group>";
+		};
 		96CDF7452B74B8D000482F2F /* struct */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,9 +467,18 @@
 			path = struct;
 			sourceTree = "<group>";
 		};
+		96D74CDA2B7B9721004A924E /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				96D74CDB2B7B9740004A924E /* ExBundle.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		96D8C5002B70C1B300369E16 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				96D74CD82B7B9696004A924E /* data.json */,
 				71E510B92B79124200188C71 /* cert */,
 				715C415B2B776F4B00BE917D /* UI */,
 				96D8C5012B70C1E200369E16 /* AppResources.swift */,
@@ -528,6 +572,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D74CD92B7B9696004A924E /* data.json in Resources */,
 				71E510CB2B7A7EFD00188C71 /* api_riotgames_com.cer in Resources */,
 				71E510CC2B7A7EFD00188C71 /* ddragon_leagueoflegends_com.cer in Resources */,
 				7193F9F02B2A07A300208B46 /* Preview Assets.xcassets in Resources */,
@@ -542,6 +587,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D74CDC2B7B9740004A924E /* ExBundle.swift in Sources */,
+				96A00C9C2B7B58CF00A3553F /* GamesHomeScreen.swift in Sources */,
 				7193F9EA2B2A07A200208B46 /* RootView.swift in Sources */,
 				966B240A2B764DE800C0CAC4 /* SummonerDetailScreen.swift in Sources */,
 				715775102B4F188F00CA92F8 /* DictionaryStore.swift in Sources */,
@@ -553,6 +600,7 @@
 				966B24082B764D0700C0CAC4 /* SummonerDetailStore.swift in Sources */,
 				961F09DC2B7A25DC00DF5E78 /* SettingsStruct.swift in Sources */,
 				718BBC832B6806B700503489 /* RootStore.swift in Sources */,
+				96A00C9E2B7B594500A3553F /* GamesHomeStore.swift in Sources */,
 				966B24042B7644FF00C0CAC4 /* RuneDetailStore.swift in Sources */,
 				7102F3DD2B2F44B2003F22A8 /* Keychain.swift in Sources */,
 				7102F3DE2B2F44B2003F22A8 /* URLSessionRequestBuilderFactoryLoLDictionary.swift in Sources */,

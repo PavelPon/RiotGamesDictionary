@@ -105,6 +105,10 @@ struct DictionaryScreen: View {
                     if let store = store.scope(state: \.screenSettings, action: \.screenSettings){
                         SettingsScreen(store: store)
                     }
+                case .screenGamesHome:
+                    if let store = store.scope(state: \.screenGamesHome, action: \.screenGamesHome){
+                        GamesHomeScreen(store: store)
+                    }
                 }
             
             }
@@ -133,14 +137,14 @@ struct DictionaryScreen: View {
                 .opacity(store.showSearchView ? 1 : 1 + progress)
                 
                 Menu {
-                    Button {
-                        
-                    } label: {
+                    NavigationLink(state: DictionaryStore.Path.State.screenGamesHome(GamesHomeStore.State())) {
                         Text("My games")
                             .font(.title3)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
-                    }
+                    }.foregroundColor(.clear)
+                    
+                    
                     
                     NavigationLink(state: DictionaryStore.Path.State.screenSettings(SettingsStore.State())) {
                         Text("Settings")

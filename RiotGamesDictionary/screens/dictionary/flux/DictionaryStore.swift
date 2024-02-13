@@ -160,6 +160,7 @@ struct DictionaryStore  {
           case screenRuneDetail(RuneDetailStore.State = .init(rune: RuneObjSlotsInnerRunesInner()))
           case screenSummonerDetail(SummonerDetailStore.State = .init(summoner: nil))
           case screenSettings(SettingsStore.State = .init())
+          case screenGamesHome(GamesHomeStore.State = .init())
       }
 
       enum Action {
@@ -167,6 +168,7 @@ struct DictionaryStore  {
         case screenRuneDetail(RuneDetailStore.Action)
         case screenSummonerDetail(SummonerDetailStore.Action)
         case screenSettings(SettingsStore.Action)
+        case screenGamesHome(GamesHomeStore.Action)
       }
 
       var body: some Reducer<State, Action> {
@@ -181,6 +183,10 @@ struct DictionaryStore  {
           }
           Scope(state: \.screenSettings, action: \.screenSettings) {
               SettingsStore()
+          }
+          
+          Scope(state: \.screenGamesHome, action: \.screenGamesHome) {
+              GamesHomeStore()
           }
       }
     }
