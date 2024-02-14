@@ -34,22 +34,38 @@ extension LoLAcountNetworkService:DependencyKey{
                 guard let datalistIDs =  try? await DataListMatchesAPI.getDataMatchesList(puuid: puuid, apiKey: key,start: index, count: count) else{
                     return ([],CancellationError())
                 }
-                print(datalistIDs)
-                var matchesList:[ModelMatchInfo] = []
-                
-                for ii in 0..<datalistIDs.count {
-                    let item = try? await DataMatchInfoAPI.getDataMatchInfo(matchId: datalistIDs[ii], apiKey: key)
-                    if let item = item {
-                        matchesList.append(item)
-                    }
-                }
-                return (matchesList,nil)
+
+//                    var result = [ModelMatchInfo?]()
+//                    for id in datalistIDs {
+//                        async let data = try? DataMatchInfoAPI.getDataMatchInfo(matchId: id, apiKey: key)
+//                        await result.append(data)
+//                    }
+                var result = try? await loadMatchsGroup(ids: datalistIDs, key: key)
+                var listMaches = result?.compactMap{$0}
+                    
+                return (listMaches ?? [],nil)
             }, getMatchForId: {id,key in
-                OpenAPIClientAPI.basePath = "https://euw1.api.riotgames.com"
+                OpenAPIClientAPI.basePath = "https://europe.api.riotgames.com"
                 guard let data = try? await DataMatchInfoAPI.getDataMatchInfo(matchId: id, apiKey: key) else{
                     return (nil,CancellationError())
                 }
                 return (data,nil)
             })
     }()
+}
+
+func loadMatchsGroup(ids:[String],key:String) async throws ->[ModelMatchInfo?] {
+    var result = [ModelMatchInfo?]()
+    let group = try await withThrowingTaskGroup(of: ModelMatchInfo?.self) { group -> [ModelMatchInfo?] in
+        for id in ids {
+            group.addTask {
+              try? await DataMatchInfoAPI.getDataMatchInfo(matchId: id, apiKey: key)
+            }
+        }
+        for try await item in group {
+            result.append(item)
+        }
+        return result
+    }
+    return group
 }

@@ -10,8 +10,8 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ModelMatchInfo: Codable, JSONEncodable, Hashable {
-
+public struct ModelMatchInfo: Codable, JSONEncodable, Hashable,Identifiable {
+    public var id: UUID = .init()
     public var metadata: ModelMatchInfoMetadata
     public var info: ModelMatchInfoInfo
 

@@ -24,9 +24,9 @@ struct ChampionDetailScreen: View {
                             ScrollView(.horizontal){
                                 HStack(spacing:10){
                                     ForEach(store.championSkins){ skin in
-                                        AsyncImage(url: URL(string: skin.url),content: { image in
-                                            image
-                                                .resizable()
+                                        
+                                        if let source =  URL(string: skin.url) {
+                                            TestCacheImageView(source: source)
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(maxWidth: size.width)
                                                 .clipShape(.rect(cornerRadius:5))
@@ -35,10 +35,25 @@ struct ChampionDetailScreen: View {
                                                     store.send(.actionSelectedSkin(skin.id))
                                                 }
                                                 .contentShape(.rect)
-                                        },
-                                                   placeholder:{
-                                            ProgressView()
-                                        }).frame(minWidth: 200,minHeight:200)
+                                                .frame(minWidth: 200,minHeight:200)
+                                        }
+//                                        AsyncImage(url: URL(string: skin.url),content: { image in
+//                                            image
+//                                                .resizable()
+//                                                .aspectRatio(contentMode: .fit)
+//                                                .frame(maxWidth: size.width)
+//                                                .clipShape(.rect(cornerRadius:5))
+//                                                .onTapGesture {
+//                                                
+//                                                    store.send(.actionSelectedSkin(skin.id))
+//                                                }
+//                                                .contentShape(.rect)
+//                                        },
+//                                                   placeholder:{
+//                                            ProgressView()
+//                                        })
+//                                        
+//                                        .frame(minWidth: 200,minHeight:200)
                                      
                                     }
 
@@ -50,18 +65,27 @@ struct ChampionDetailScreen: View {
                             .scrollClipDisabled()
                         }.frame(height:200)
                     } else {
-                        AsyncImage(url: URL(string: store.championDetailObj?.id.urlsplashChampion() ?? ""),content: { image in
-                            image
-                                .resizable()
+//                        AsyncImage(url: URL(string: store.championDetailObj?.id.urlsplashChampion() ?? ""),content: { image in
+//                            image
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(maxWidth: .infinity)
+//                                .cornerRadius(5)
+//                        },
+//                                   placeholder:{
+//                            ProgressView()
+//                        })
+//                        .frame(maxWidth: .infinity, minHeight: 200)
+//                        .background(Color.clear)
+                        
+                        if let source =  URL(string: store.championDetailObj?.id.urlsplashChampion() ?? "") {
+                            TestCacheImageView(source: source)
                                 .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: .infinity)
-                                .cornerRadius(5)
-                        },
-                                   placeholder:{
-                            ProgressView()
-                        })
-                        .frame(maxWidth: .infinity, minHeight: 200)
-                        .background(Color.clear)
+                                .clipShape(.rect(cornerRadius:5))
+                                .contentShape(.rect)
+                                .frame(minWidth: .infinity,minHeight:200)
+                        }
+                        
                     }
                     
                     Text(store.championDetailObj?.title ?? "")

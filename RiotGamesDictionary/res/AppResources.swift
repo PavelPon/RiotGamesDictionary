@@ -13,6 +13,7 @@ public class StringResources {
    static let keyLocalization = "keyVersionLocalization"
    static let keyPUUID = "keyPUUID"
    static let keySummonerName = "keySummonerName"
+   static let keyRiotRequestKey = "keyRequestKey"
 }
 
 public class ColorResources {

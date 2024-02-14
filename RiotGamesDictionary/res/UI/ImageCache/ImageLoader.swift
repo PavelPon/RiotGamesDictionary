@@ -32,7 +32,9 @@ actor ImageLoader {
         
         let task:Task<UIImage,Error> = Task{
             let (imageData,_) =  try await URLSession.shared.data(for: urlRequest)
-            let image = UIImage(data: imageData)!
+            guard let image = UIImage(data: imageData) else {
+                return UIImage()
+            }
             do {
                 try self.persistImage(image,for: urlRequest)
             }catch{
@@ -67,7 +69,7 @@ actor ImageLoader {
     
     private func fileName(for urlRequest: URLRequest) -> URL?{
         guard let fileName = urlRequest.url?.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
+              let applicationSupport = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
             return nil
         }
         

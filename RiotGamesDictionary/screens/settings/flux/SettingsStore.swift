@@ -19,6 +19,7 @@ struct SettingsStore{
     struct State:Equatable{
         var localization = ""
         var version = ""
+        var keyRiot = ""
         
         var selectedLocalization:ItemLocalization = ItemLocalization(title: "", value: "")
         var selectedVersion:String = ""
@@ -64,6 +65,7 @@ struct SettingsStore{
                 state.version = keychainService.service.get(key: StringResources.keyVersionDictionary) ?? ""
                 state.localization = keychainService.service.get(key: StringResources.keyLocalization) ?? ""
                 state.titleName = keychainService.service.get(key: StringResources.keySummonerName) ?? "-"
+                state.keyRiot = keychainService.service.get(key: StringResources.keyRiotRequestKey) ?? ""
                 state.listLocalization.forEach { item in
                     if item.value == state.localization{
                         state.selectedLocalization = item
@@ -83,7 +85,7 @@ struct SettingsStore{
             case .actionRequestSummonerName:
                 state.isLoading = true
                 return .run {[state] send in
-                    let data  = await acountNetwork.getUserData(state.searchSummonerName,obfuscatorService.service.reveal(key: obfuscatorService.service.riotAPIKey))
+                    let data  = await acountNetwork.getUserData(state.searchSummonerName.trimmingCharacters(in: .whitespacesAndNewlines),state.keyRiot)
                     
                     if data.1 != nil{
                         await send(.failureRequestSummonerName(data.1?.localizedDescription ?? "error"))

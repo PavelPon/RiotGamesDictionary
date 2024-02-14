@@ -16,7 +16,7 @@ struct RiotGamesDictionaryApp: App {
     
     init(){
 
-        obfuscatorService.service.bytesByObfuscatingString(string: "RGAPI-5086d959-e2ec-4af8-8738-d9444ca0ee60")
+        //obfuscatorService.service.bytesByObfuscatingString(string: "")
 
         if keychainService.service.get(key: StringResources.keyVersionDictionary) == nil {
             keychainService.service.set(key: StringResources.keyVersionDictionary, value: "13.23.1")
@@ -24,7 +24,9 @@ struct RiotGamesDictionaryApp: App {
         if keychainService.service.get(key: StringResources.keyLocalization) == nil {
             keychainService.service.set(key: StringResources.keyLocalization, value: "ru_RU")
         }
-        
+        if keychainService.service.get(key: StringResources.keyRiotRequestKey) == nil {
+            keychainService.service.set(key: StringResources.keyRiotRequestKey, value: obfuscatorService.service.reveal(key: obfuscatorService.service.riotAPIKey))
+        }
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
     }
