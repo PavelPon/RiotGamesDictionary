@@ -28,6 +28,7 @@
 		7193F9EC2B2A07A300208B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7193F9EB2B2A07A300208B46 /* Assets.xcassets */; };
 		7193F9F02B2A07A300208B46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7193F9EF2B2A07A300208B46 /* Preview Assets.xcassets */; };
 		7193F9F82B2A0BCC00208B46 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7193F9F72B2A0BCC00208B46 /* ComposableArchitecture */; };
+		719886042B81E16300BC3FF0 /* GamesHomeStuct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719886032B81E16300BC3FF0 /* GamesHomeStuct.swift */; };
 		71A49F7E2B7CC59600F1FEDB /* exRandomAccessCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A49F7D2B7CC59600F1FEDB /* exRandomAccessCollection.swift */; };
 		71C5595E2B78FFBB00EB1223 /* CertificatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C5595D2B78FFBB00EB1223 /* CertificatesService.swift */; };
 		71C559602B78FFC800EB1223 /* ObfuscatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C5595F2B78FFC800EB1223 /* ObfuscatorService.swift */; };
@@ -77,6 +78,7 @@
 		7193F9ED2B2A07A300208B46 /* RiotGamesDictionary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RiotGamesDictionary.entitlements; sourceTree = "<group>"; };
 		7193F9EF2B2A07A300208B46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7193F9F92B2A0F3300208B46 /* LoLDictionaryNetwork */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LoLDictionaryNetwork; path = Modules/LoLDictionaryNetwork; sourceTree = "<group>"; };
+		719886032B81E16300BC3FF0 /* GamesHomeStuct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesHomeStuct.swift; sourceTree = "<group>"; };
 		71A49F7D2B7CC59600F1FEDB /* exRandomAccessCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exRandomAccessCollection.swift; sourceTree = "<group>"; };
 		71C5595D2B78FFBB00EB1223 /* CertificatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatesService.swift; sourceTree = "<group>"; };
 		71C5595F2B78FFC800EB1223 /* ObfuscatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatorService.swift; sourceTree = "<group>"; };
@@ -327,6 +329,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		719886022B81E14F00BC3FF0 /* struc */ = {
+			isa = PBXGroup;
+			children = (
+				719886032B81E16300BC3FF0 /* GamesHomeStuct.swift */,
+			);
+			path = struc;
+			sourceTree = "<group>";
+		};
 		71E510B92B79124200188C71 /* cert */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +449,7 @@
 		96A00C982B7B585800A3553F /* gamesList */ = {
 			isa = PBXGroup;
 			children = (
+				719886022B81E14F00BC3FF0 /* struc */,
 				96A00C9A2B7B588700A3553F /* flux */,
 				96A00C992B7B587F00A3553F /* ui */,
 			);
@@ -606,6 +617,7 @@
 				96A00C9E2B7B594500A3553F /* GamesHomeStore.swift in Sources */,
 				966B24042B7644FF00C0CAC4 /* RuneDetailStore.swift in Sources */,
 				7102F3DD2B2F44B2003F22A8 /* Keychain.swift in Sources */,
+				719886042B81E16300BC3FF0 /* GamesHomeStuct.swift in Sources */,
 				7102F3DE2B2F44B2003F22A8 /* URLSessionRequestBuilderFactoryLoLDictionary.swift in Sources */,
 				71A49F7E2B7CC59600F1FEDB /* exRandomAccessCollection.swift in Sources */,
 				966B24062B76451F00C0CAC4 /* RuneDetailScreen.swift in Sources */,

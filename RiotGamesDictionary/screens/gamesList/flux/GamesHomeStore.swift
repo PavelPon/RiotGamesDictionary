@@ -27,7 +27,7 @@ struct GamesHomeStore{
         var textInfoError = ""
         var index = 0
         var count = 5//20
-        var listGames:[ModelMatchInfo] = []
+        var listGames:[ModelMatchInfoFinal] = []
         var isPagination = true
     }
     
@@ -68,16 +68,25 @@ struct GamesHomeStore{
                     }
                 }
                 
-            case .successData(let mathes):
+            case .successData(let matches):
                 state.isLoading = false
-                if mathes.isEmpty,state.listGames.isEmpty {
+                if matches.isEmpty,state.listGames.isEmpty {
                     return.send(.failureData("Game list is empty"))
                 }
-                if mathes.count < state.count{
+                if matches.count < state.count{
                     state.isPagination = false
                 }
                 state.isShowTextInfoError = false
-                state.listGames.append(contentsOf: mathes)
+                let mathesThissummonerData = matches.map { item in
+                    var summonerData:ModelMatchInfoInfoParticipantsInner?
+                    item.info.participants.forEach { participant in
+                        if participant.puuid == state.accountPUUID{
+                            summonerData = participant
+                        }
+                    }
+                    return ModelMatchInfoFinal(summoderData: summonerData, modelMatchInfo: item)
+                }
+                state.listGames.append(contentsOf: mathesThissummonerData)
                 return.none
             case .failureData(let error):
                 state.isLoading = false

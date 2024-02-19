@@ -62,14 +62,14 @@ struct GamesHomeScreen: View {
     
     
     @ViewBuilder
-    func GamesHomeCell(match:ModelMatchInfo) -> some View{
+    func GamesHomeCell(match:ModelMatchInfoFinal) -> some View{
         ZStack{
             CardView(color:ColorResources.color2).frame(maxWidth:.infinity)
             VStack(spacing:10){
                 
                 HStack{
                     ZStack(alignment: .bottomTrailing){
-                        if let sourse = URL(string: match.info.participants[0].championName?.urlIconChampion(version: store.version) ?? ""){
+                        if let sourse = URL(string: match.summoderData?.championName?.urlIconChampion(version: store.version) ?? ""){
                             TestCacheImageView(source: sourse)
                                 .frame(width: 70,height: 70)
                                 .aspectRatio(1, contentMode: .fit)
@@ -77,7 +77,7 @@ struct GamesHomeScreen: View {
                                 .clipped()
                         }
                         
-                        Text("\(Int(match.info.participants[0].champLevel ?? 0))")
+                        Text("\(Int(match.summoderData?.champLevel ?? 0))")
                             .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
@@ -89,7 +89,7 @@ struct GamesHomeScreen: View {
                             .offset(x:-11,y:-11)
                     }
                     
-                    Text("\(Int(match.info.participants[0].kills ?? 0)) / \(Int(match.info.participants[0].deaths ?? 0)) / \(Int(match.info.participants[0].assists ?? 0))")
+                    Text("\(Int(match.summoderData?.kills ?? 0)) / \(Int(match.summoderData?.deaths ?? 0)) / \(Int(match.summoderData?.assists ?? 0))")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -97,11 +97,11 @@ struct GamesHomeScreen: View {
                     Spacer()
                     
                     VStack(alignment:.leading){
-                        Text(match.info.participants[0].win == true ? "Victory":"Defeat")
+                        Text(match.summoderData?.win == true ? "Victory":"Defeat")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
-                        Text("Time: \(Int(match.info.gameDuration / 60)) min")
+                        Text("Time: \(Int(match.modelMatchInfo.info.gameDuration / 60)) min")
                             .font(.system(size: 15))
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
@@ -113,7 +113,7 @@ struct GamesHomeScreen: View {
                 ZStack{
                     CardView(color:ColorResources.color3).frame(maxWidth:.infinity)
                     LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 5), count: 2),spacing:5) {
-                        ForEach(match.info.participants,id:\.self){ item in
+                        ForEach(match.modelMatchInfo.info.participants,id:\.self){ item in
                             GamesHomeCellSummonerIter(participant: item)
                         }
                     }.frame(maxWidth: .infinity)
