@@ -13,21 +13,16 @@ struct SummonerDetailScreen: View {
         ScrollView(.vertical){
             VStack(alignment:.leading,spacing:10){
                 HStack(spacing:20){
-                    
-                    AsyncImage(url: URL(string: store.summoner?.image.full.urlIcon(version: store.version, group: store.summoner?.image.group ?? "") ?? ""),content: { image in
-                        image
-                            .resizable()
-                            .aspectRatio(1,contentMode: .fit)
-                            .frame(maxWidth: .infinity)
+        
+                    if let source =  URL(string: store.summoner?.image.full.urlIcon(version: store.version, group: store.summoner?.image.group ?? "") ?? "") {
+                        TestCacheImageView(source: source)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100,height: 100)
+                            .background(Color.clear)
                             .cornerRadius(5)
-                            .frame(width: 70,height: 70)
-                    },
-                               placeholder:{
-                        ProgressView()
-                    })
-                    .frame(width: 100,height: 100)
-                    .background(Color.clear)
+                    }
                     
+
                     Text("\(store.summoner?.name ?? "")")
                         .font(.title)
                         .fontWeight(.semibold)

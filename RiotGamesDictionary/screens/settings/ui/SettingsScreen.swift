@@ -7,8 +7,16 @@
 
 import SwiftUI
 import ComposableArchitecture
+import SwiftData
 struct SettingsScreen: View {
-    @Perception.Bindable var  store:StoreOf<SettingsStore>
+    @Bindable var  store:StoreOf<SettingsStore>
+    
+    @Query(FetchDescriptor<Player>()) var playerQuery: [Player] {
+        didSet {
+            store.send(.queryChangedPlayers(self.allMovies)) // ????/
+        }
+    }
+    
     var body: some View {
         Form{
             Section {

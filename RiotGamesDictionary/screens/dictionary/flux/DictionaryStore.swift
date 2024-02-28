@@ -88,7 +88,7 @@ struct DictionaryStore  {
             case .searchChampions(let champions):
                 state.championsSearch = champions
                 return .none
-            case .failureData(let sError):
+            case .failureData(_):
                 state.isLoading = false
                 return .none
             case .path:

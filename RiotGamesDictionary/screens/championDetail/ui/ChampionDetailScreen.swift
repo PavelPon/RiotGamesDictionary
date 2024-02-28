@@ -11,14 +11,12 @@ import UI
 import LoLDictionaryNetwork
 
 struct ChampionDetailScreen: View {
-    @Perception.Bindable var store: StoreOf<ChampionDetailStore>
+    @Bindable var store: StoreOf<ChampionDetailStore>
     
     var body: some View {
-        WithPerceptionTracking{
+
             ScrollView{
                 VStack(alignment: .leading, spacing:15){
-                    
-                    if #available(iOS 17.0, *){
                         GeometryReader{ proxy in
                             let size = proxy.size
                             ScrollView(.horizontal){
@@ -37,24 +35,6 @@ struct ChampionDetailScreen: View {
                                                 .contentShape(.rect)
                                                 .frame(minWidth: 200,minHeight:200)
                                         }
-//                                        AsyncImage(url: URL(string: skin.url),content: { image in
-//                                            image
-//                                                .resizable()
-//                                                .aspectRatio(contentMode: .fit)
-//                                                .frame(maxWidth: size.width)
-//                                                .clipShape(.rect(cornerRadius:5))
-//                                                .onTapGesture {
-//                                                
-//                                                    store.send(.actionSelectedSkin(skin.id))
-//                                                }
-//                                                .contentShape(.rect)
-//                                        },
-//                                                   placeholder:{
-//                                            ProgressView()
-//                                        })
-//                                        
-//                                        .frame(minWidth: 200,minHeight:200)
-                                     
                                     }
 
                                 }.scrollTargetLayout()
@@ -64,29 +44,7 @@ struct ChampionDetailScreen: View {
                             .scrollTargetBehavior(.viewAligned)
                             .scrollClipDisabled()
                         }.frame(height:200)
-                    } else {
-//                        AsyncImage(url: URL(string: store.championDetailObj?.id.urlsplashChampion() ?? ""),content: { image in
-//                            image
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fit)
-//                                .frame(maxWidth: .infinity)
-//                                .cornerRadius(5)
-//                        },
-//                                   placeholder:{
-//                            ProgressView()
-//                        })
-//                        .frame(maxWidth: .infinity, minHeight: 200)
-//                        .background(Color.clear)
-                        
-                        if let source =  URL(string: store.championDetailObj?.id.urlsplashChampion() ?? "") {
-                            TestCacheImageView(source: source)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(.rect(cornerRadius:5))
-                                .contentShape(.rect)
-                                .frame(minWidth: .infinity,minHeight:200)
-                        }
-                        
-                    }
+                 
                     
                     Text(store.championDetailObj?.title ?? "")
                         .font(.title)
@@ -193,7 +151,7 @@ struct ChampionDetailScreen: View {
             .navigationTitle(store.championDetailObj?.name ?? "")
             .navigationBarTitleDisplayMode(.large)
             .navigationBarHidden(store.showDetailSkinsView)
-        }
+        
     }
     
     @ViewBuilder
@@ -208,17 +166,7 @@ struct ChampionDetailScreen: View {
                         .frame(maxWidth:.infinity,alignment: .leading)
                 
                 HStack(spacing: 10){
-//                    AsyncImage(url: URL(string: passive?.image.full.urlIcon(version: store.version, group: passive?.image.group ?? "") ?? ""),content: { image in
-//                        image
-//                            .resizable()
-//                            .aspectRatio(1,contentMode: .fit)
-//                            .cornerRadius(5)
-//                            .frame(width: 70,height: 70)
-//                    },
-//                               placeholder:{
-//                        ProgressView()
-//                    })
-                    
+         
                     if let source =  URL(string: passive?.image.full.urlIcon(version: store.version, group: passive?.image.group ?? "") ?? "") {
                         TestCacheImageView(source: source)
                         .aspectRatio(1, contentMode: .fit)
@@ -251,19 +199,6 @@ struct ChampionDetailScreen: View {
                     .frame(maxWidth:.infinity,alignment: .leading)
                 HStack(spacing: 10){
                     
-//                    AsyncImage(url: URL(string: spell.image?.full.urlIcon(version: store.version, group: spell.image?.group ?? "") ?? ""),content: { image in
-//                        image
-//                            .resizable()
-//                            .aspectRatio(1,contentMode: .fit)
-//                            .frame(maxWidth: .infinity)
-//                            .cornerRadius(5)
-//                            .frame(width: 70,height: 70)
-//                    },
-//                               placeholder:{
-//                        ProgressView()
-//                    })
-//                    .frame(width: 70,height: 70)
-//                    .background(Color.clear)
                     if let source =  URL(string: spell.image?.full.urlIcon(version: store.version, group: spell.image?.group ?? "") ?? "") { 
                         TestCacheImageView(source: source)
                         .aspectRatio(1, contentMode: .fit)

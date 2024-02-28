@@ -34,6 +34,7 @@ struct SettingsStore{
         var searchSummonerName = ""
         var titleName = ""
         
+        var players:[Player] = []
         @Presents var alert: AlertState<Action.Alert>?
     }
     
@@ -47,6 +48,8 @@ struct SettingsStore{
         case actionRequestSummonerName
         case deleteAccountData
         
+        case queryChangedPlayers([Player])
+        case actionPlayer(Player)
         case successSummonerName(SummonerByName)
         case failureRequestSummonerName(String)
         
@@ -56,6 +59,10 @@ struct SettingsStore{
         enum Alert {
           case incrementButtonTapped
         }
+        
+        
+        
+        
     }
     
     var body: some ReducerOf<Self> {
@@ -114,7 +121,7 @@ struct SettingsStore{
                 keychainService.service.set(key: StringResources.keyPUUID, value: userData.puuid)
                 keychainService.service.set(key: StringResources.keySummonerName, value: userData.name)
                 return.none
-            case .failureRequestSummonerName(let error):
+            case .failureRequestSummonerName(_):
                 state.isLoading = false
                 return .send(.alertButtonTapped("Not search account"))
             case .deleteAccountData:
@@ -143,6 +150,11 @@ struct SettingsStore{
                     }
                     return .none
                 
+            case .queryChangedPlayers(let list):
+                state.players = list
+                return .none
+            case .actionPlayer(_):
+                return .none
             }
         }
         .ifLet(\.$alert, action: \.alert)

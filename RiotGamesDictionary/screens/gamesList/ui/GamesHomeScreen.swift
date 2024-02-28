@@ -13,7 +13,6 @@ struct GamesHomeScreen: View {
     let store:StoreOf<GamesHomeStore>
     
     var body: some View {
-        WithPerceptionTracking{
             VStack{
                 
                 if store.isShowTextInfoError{
@@ -57,7 +56,7 @@ struct GamesHomeScreen: View {
                 }
             }
             .navigationTitle("Matches \"\(store.name)\" #EUW")
-        }
+        
     }
     
     

@@ -11,7 +11,7 @@ import LoLDictionaryNetwork
 import UI
 
 struct DictionaryScreen: View {
-    @Perception.Bindable var  store:StoreOf<DictionaryStore>
+    @Bindable var  store:StoreOf<DictionaryStore>
     var body: some View {
         WithPerceptionTracking{
             NavigationStack(path: $store.scope(state: \.path, action: \.path)) {

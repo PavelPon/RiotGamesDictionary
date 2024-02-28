@@ -40,6 +40,8 @@
 		71E6B8FF2B6D5C010075C23E /* ChampionDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6B8FE2B6D5C010075C23E /* ChampionDetailScreen.swift */; };
 		961F09DA2B7A232000DF5E78 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F09D92B7A232000DF5E78 /* SettingsStore.swift */; };
 		961F09DC2B7A25DC00DF5E78 /* SettingsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F09DB2B7A25DC00DF5E78 /* SettingsStruct.swift */; };
+		962664292B8F17020066F672 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962664282B8F17020066F672 /* Database.swift */; };
+		9626642B2B8F17AB0066F672 /* PlayerDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626642A2B8F17AB0066F672 /* PlayerDatabase.swift */; };
 		966866A02B7379F200AB0788 /* DictionaryStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9668669F2B7379F200AB0788 /* DictionaryStruct.swift */; };
 		966B24042B7644FF00C0CAC4 /* RuneDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24032B7644FF00C0CAC4 /* RuneDetailStore.swift */; };
 		966B24062B76451F00C0CAC4 /* RuneDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B24052B76451F00C0CAC4 /* RuneDetailScreen.swift */; };
@@ -90,6 +92,8 @@
 		71E6B8FE2B6D5C010075C23E /* ChampionDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionDetailScreen.swift; sourceTree = "<group>"; };
 		961F09D92B7A232000DF5E78 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		961F09DB2B7A25DC00DF5E78 /* SettingsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStruct.swift; sourceTree = "<group>"; };
+		962664282B8F17020066F672 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		9626642A2B8F17AB0066F672 /* PlayerDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDatabase.swift; sourceTree = "<group>"; };
 		9668669F2B7379F200AB0788 /* DictionaryStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStruct.swift; sourceTree = "<group>"; };
 		966B24032B7644FF00C0CAC4 /* RuneDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuneDetailStore.swift; path = RiotGamesDictionary/screens/runes/flux/RuneDetailStore.swift; sourceTree = SOURCE_ROOT; };
 		966B24052B76451F00C0CAC4 /* RuneDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuneDetailScreen.swift; path = RiotGamesDictionary/screens/runes/ui/RuneDetailScreen.swift; sourceTree = SOURCE_ROOT; };
@@ -155,6 +159,7 @@
 		7102F3D42B2F44B2003F22A8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				962664272B8F16F70066F672 /* db */,
 				715775072B4D9D2300CA92F8 /* network */,
 				7102F3DF2B2F450B003F22A8 /* resoures */,
 			);
@@ -438,6 +443,15 @@
 			path = ui;
 			sourceTree = "<group>";
 		};
+		962664272B8F16F70066F672 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				962664282B8F17020066F672 /* Database.swift */,
+				9626642A2B8F17AB0066F672 /* PlayerDatabase.swift */,
+			);
+			path = db;
+			sourceTree = "<group>";
+		};
 		9668669E2B7379C800AB0788 /* struct */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,12 +619,14 @@
 				96A00C9C2B7B58CF00A3553F /* GamesHomeScreen.swift in Sources */,
 				7193F9EA2B2A07A200208B46 /* RootView.swift in Sources */,
 				966B240A2B764DE800C0CAC4 /* SummonerDetailScreen.swift in Sources */,
+				962664292B8F17020066F672 /* Database.swift in Sources */,
 				715775102B4F188F00CA92F8 /* DictionaryStore.swift in Sources */,
 				7193F9E82B2A07A200208B46 /* RiotGamesDictionaryApp.swift in Sources */,
 				7102F3DB2B2F44B2003F22A8 /* Certificates.swift in Sources */,
 				71E6B8FD2B6D58E80075C23E /* ChampionDetailStore.swift in Sources */,
 				96CDF7472B74B8EF00482F2F /* ChampionDetailStruct.swift in Sources */,
 				7102F3DC2B2F44B2003F22A8 /* Obfuscator.swift in Sources */,
+				9626642B2B8F17AB0066F672 /* PlayerDatabase.swift in Sources */,
 				966B24082B764D0700C0CAC4 /* SummonerDetailStore.swift in Sources */,
 				961F09DC2B7A25DC00DF5E78 /* SettingsStruct.swift in Sources */,
 				718BBC832B6806B700503489 /* RootStore.swift in Sources */,
@@ -780,7 +796,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;
@@ -821,7 +837,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.2;

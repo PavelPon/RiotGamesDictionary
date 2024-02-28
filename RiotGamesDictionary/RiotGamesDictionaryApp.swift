@@ -9,11 +9,18 @@ import SwiftUI
 //import DIProject
 import ComposableArchitecture
 import LoLDictionaryNetwork
+import SwiftData
 @main
 struct RiotGamesDictionaryApp: App {
     @Dependency(\.keychainService) var keychainService
     @Dependency(\.obfuscatorService) var obfuscatorService
-    
+    @Dependency(\.databaseService) var databaseService
+    var modelContext: ModelContext {
+        guard let modelContext = try? self.databaseService.context() else {
+            fatalError("Could not find modelcontext")
+        }
+        return modelContext
+    }
     init(){
 
        //obfuscatorService.service.bytesByObfuscatingString(string: "RGAPI-794dd587-0287-42fb-838b-3feba3d3a483")
@@ -36,18 +43,7 @@ struct RiotGamesDictionaryApp: App {
     var body: some Scene {
         WindowGroup {
                 RootView(store: Store(initialState: RootStore.State(), reducer: {RootStore()}))
-        }
-        .onChange(of: scenePhase) { newState in
-            switch newState {
-            case .background:
-                print("background")
-            case .inactive:
-                print("inactive")
-            case .active:
-                print("active")
-            @unknown default:
-                print("default")
-            }
+                .modelContext(self.modelContext)
         }
     }
 }
