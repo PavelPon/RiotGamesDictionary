@@ -161,16 +161,7 @@ struct DictionaryScreen: View {
                         .frame(width: 35,height: 35)
                 }
 
-                
-//                Button{
-//                    
-//                }label: {
-//                    Image(systemName: "text.justify")
-//                        .font(.title3)
-//                        .fontWeight(.semibold)
-//                        .foregroundColor(.white)
-//                        .frame(width: 35,height: 35)
-//                }
+            
                 
                 .opacity(store.showSearchView ? 0 : 1)
                 .overlay{

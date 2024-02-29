@@ -57,8 +57,8 @@ class Player: Identifiable {
     var name: String
     var PUUID: String
 
-    init(name: String, PUUID: String) {
-        self.id = .init()
+    init(id:UUID,name: String, PUUID: String) {
+        self.id = id
         self.name = name
         self.PUUID = PUUID
     }

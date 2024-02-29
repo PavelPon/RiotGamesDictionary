@@ -8,6 +8,7 @@
 import Foundation
 import ComposableArchitecture
 import AccountRiotApiNetwork
+import SwiftData
 
 
 @Reducer
@@ -15,6 +16,7 @@ struct SettingsStore{
     @Dependency(\.keychainService) var keychainService
     @Dependency(\.acountNetwork) var acountNetwork
     @Dependency(\.obfuscatorService) var obfuscatorService
+    @Dependency(\.swiftData) var context
     @ObservableState
     struct State:Equatable{
         var localization = ""
@@ -29,12 +31,11 @@ struct SettingsStore{
         var listLocalization:[ItemLocalization] = [ItemLocalization(title:"Russia",value:"ru_RU"),ItemLocalization(title:"United Kingdom",value:"en_GB"),ItemLocalization(title:"Korea",value:"ko_KR")]
         
         var isLoading:Bool = false
-
         
         var searchSummonerName = ""
-        var titleName = ""
         
         var players:[Player] = []
+        var selectedPlayer:Player = .init(id: .init(), name: "-", PUUID: "")
         @Presents var alert: AlertState<Action.Alert>?
     }
     
@@ -71,7 +72,19 @@ struct SettingsStore{
             case .onAppear:
                 state.version = keychainService.service.get(key: StringResources.keyVersionDictionary) ?? ""
                 state.localization = keychainService.service.get(key: StringResources.keyLocalization) ?? ""
-                state.titleName = keychainService.service.get(key: StringResources.keySummonerName) ?? "-"
+                
+                if let keychainPUUID = keychainService.service.get(key: StringResources.keyPUUID){
+                    do {
+                       let players =  try context.fetchAll()
+                        players.forEach { item in
+                            if item.PUUID == keychainPUUID {
+                                state.selectedPlayer = item
+                            }
+                        }
+                        state.players = players
+                    } catch { }
+                }
+                
                 state.keyRiot = keychainService.service.get(key: StringResources.keyRiotRequestKey) ?? ""
                 state.listLocalization.forEach { item in
                     if item.value == state.localization{
@@ -117,17 +130,50 @@ struct SettingsStore{
                 return .none
             case .successSummonerName(let userData):
                 state.isLoading = false
-                state.titleName = userData.name
-                keychainService.service.set(key: StringResources.keyPUUID, value: userData.puuid)
-                keychainService.service.set(key: StringResources.keySummonerName, value: userData.name)
+                do {
+                    let unreleasedPlayer = FetchDescriptor<Player>(predicate: #Predicate { player in
+                        player.PUUID == userData.puuid
+                    })
+                    let data = try context.fetch(unreleasedPlayer)
+                    
+                    if data.isEmpty{
+                        
+                        let addPlayer:Player = .init(id: .init(), name: userData.name, PUUID: userData.puuid)
+                        try context.add(addPlayer)
+                        state.selectedPlayer = addPlayer
+                        
+                        keychainService.service.set(key: StringResources.keyPUUID, value: userData.puuid)
+                        keychainService.service.set(key: StringResources.keySummonerName, value: userData.name)
+                        
+                        let data =  try context.fetchAll()
+                        return .send(.queryChangedPlayers(data))
+                    }
+                } catch {}
+
                 return.none
             case .failureRequestSummonerName(_):
                 state.isLoading = false
                 return .send(.alertButtonTapped("Not search account"))
             case .deleteAccountData:
-                keychainService.service.delete(StringResources.keyPUUID)
-                keychainService.service.delete(StringResources.keySummonerName)
-                state.titleName = keychainService.service.get(key: StringResources.keySummonerName) ?? "-"
+                do {
+                    try context.delete(state.selectedPlayer)
+                } catch { }
+
+                do {
+                   let list =  try context.fetchAll()
+                    if !list.isEmpty {
+                        state.selectedPlayer = list.first!
+                        keychainService.service.set(key: StringResources.keyPUUID, value: list.first!.PUUID)
+                        keychainService.service.set(key: StringResources.keySummonerName, value: list.first!.name)
+                    }else{
+                        state.selectedPlayer = .init(id: .init(), name: "-", PUUID: "")
+                        keychainService.service.delete(StringResources.keyPUUID)
+                        keychainService.service.delete(StringResources.keySummonerName)
+                    }
+                    return .send(.queryChangedPlayers(list))
+                } catch { }
+                
+                
                 return .none
                 
                 
@@ -153,7 +199,11 @@ struct SettingsStore{
             case .queryChangedPlayers(let list):
                 state.players = list
                 return .none
-            case .actionPlayer(_):
+                
+            case .actionPlayer(let player):
+                state.selectedPlayer = player
+                keychainService.service.set(key: StringResources.keyPUUID, value: player.PUUID)
+                keychainService.service.set(key: StringResources.keySummonerName, value: player.name)
                 return .none
             }
         }

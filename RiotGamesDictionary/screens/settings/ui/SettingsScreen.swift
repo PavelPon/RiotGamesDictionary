@@ -11,16 +11,10 @@ import SwiftData
 struct SettingsScreen: View {
     @Bindable var  store:StoreOf<SettingsStore>
     
-    @Query(FetchDescriptor<Player>()) var playerQuery: [Player] {
-        didSet {
-            store.send(.queryChangedPlayers(self.allMovies)) // ????/
-        }
-    }
-    
     var body: some View {
         Form{
             Section {
-                Text("Saved account: \(store.titleName)")
+                Text("Saved account: \(store.selectedPlayer.name)")
                     .foregroundColor(.white)
                 
                 TextField("Name",text: $store.searchSummonerName.sending(\.setSearchSummonerName))
@@ -30,15 +24,23 @@ struct SettingsScreen: View {
                 Button(action: {
                     store.send(.actionRequestSummonerName)
                 }, label: {
-                    Text("Get data account")
+                    Text("Get new data account")
                 })
                 
                 Button(action: {
                     store.send(.deleteAccountData)
                 }, label: {
-                    Text("Delete data account")
+                    Text("Delete selected account")
                 })
                 
+                Picker("Players:", selection: $store.selectedPlayer.sending(\.actionPlayer)) {
+                    ForEach(store.players,id:\.self) { item in
+                            Text("\(item.name)")
+                                .font(.system(size: 13))
+                                .foregroundColor(.white)
+                    }
+                    
+                }.foregroundColor(.white)
             } header: {
                 Text("Account data EUW*")
                     .fontWeight(.semibold)
